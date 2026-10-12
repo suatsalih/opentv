@@ -94,7 +94,7 @@ recording while it's still taping, and the whole interface now speaks 30 languag
 ### Notes
 
 - Everything stays on your device — provider logins never leave the box.
-- Free and open source (GPL-3.0): https://github.com/opentvproject/opentv
+- Free and open source (GPL-3.0): https://github.com/suatsalih/opentv
 
 
 ## 0.10.0

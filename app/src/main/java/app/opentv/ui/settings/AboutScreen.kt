@@ -139,15 +139,13 @@ fun AboutScreen(onBack: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.height(12.dp))
-            LinkLine(stringResource(R.string.about_sponsor_github), "github.com/sponsors/legionnaireneyland")
-            Spacer(Modifier.height(12.dp))
             LinkLine(
                 stringResource(R.string.about_donate_paypal),
-                "leetobin1982@gmail.com",
-                url = "https://www.paypal.com/donate/?business=leetobin1982@gmail.com&item_name=Support+OpenTV&no_recurring=0&currency_code=GBP",
+                "suat.salih@gmail.com",
+                url = "https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0",
             )
             Spacer(Modifier.height(12.dp))
-            val donateQr = remember { QrCodes.render("https://github.com/sponsors/legionnaireneyland", 400) }
+            val donateQr = remember { QrCodes.render("https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0", 400) }
             donateQr?.let { bmp ->
                 Image(
                     bitmap = bmp.asImageBitmap(),
@@ -171,9 +169,9 @@ fun AboutScreen(onBack: () -> Unit) {
                 "GNU General Public License v3.0",
                 url = "https://www.gnu.org/licenses/gpl-3.0.html",
             )
-            LinkLine(stringResource(R.string.about_source_code), "github.com/opentvproject/opentv")
-            LinkLine(stringResource(R.string.about_report_bug), "github.com/opentvproject/opentv/issues")
-            LinkLine(stringResource(R.string.about_install_page), "opentvproject.github.io/opentv")
+            LinkLine(stringResource(R.string.about_source_code), "github.com/suatsalih/opentv")
+            LinkLine(stringResource(R.string.about_report_bug), "github.com/suatsalih/opentv/issues")
+            LinkLine(stringResource(R.string.about_install_page), "suatsalih.github.io/opentv")
         }
     }
 }
