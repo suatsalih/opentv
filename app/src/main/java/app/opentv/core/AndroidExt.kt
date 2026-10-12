@@ -10,6 +10,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
@@ -48,11 +49,15 @@ fun Context.isIgnoringBatteryOptimizations(): Boolean {
 @SuppressLint("BatteryLife")
 fun Context.requestIgnoreBatteryOptimizations() {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
+    // The Google Play edition doesn't declare the permission behind the per-app request screen
+    // (Play restricts it), and without it that screen closes silently — go straight to the list.
+    val mayAskDirectly = checkSelfPermission(android.Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) ==
+        PackageManager.PERMISSION_GRANTED
     val direct = Intent(
         Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
         Uri.parse("package:$packageName"),
     ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    val launched = runCatching { startActivity(direct) }.isSuccess
+    val launched = mayAskDirectly && runCatching { startActivity(direct) }.isSuccess
     if (!launched) {
         runCatching {
             startActivity(
