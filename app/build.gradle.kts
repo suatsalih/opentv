@@ -77,13 +77,6 @@ android {
         jvmTarget = "17"
     }
 
-    lint {
-        // English is the fallback for any string a translation has not caught up with yet, so a
-        // missing translation shows English text rather than breaking anything. Kept visible as a
-        // warning (the translation backlog), not a build-breaking error.
-        warning += "MissingTranslation"
-    }
-
     buildFeatures {
         compose = true
         buildConfig = true
