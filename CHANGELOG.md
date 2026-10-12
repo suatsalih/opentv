@@ -6,8 +6,9 @@
   languages, so choosing another one in Settings did nothing. Every language is now included.
 - **Phones: nothing hidden under the system bars.** The menu, Settings and screen titles no longer
   sit under the status bar, the gesture bar or a camera cut-out.
-- **Phones: everything scaled to fit.** Screens are drawn slightly smaller on phones so labels are
-  no longer cut off or overlapping, especially in portrait. TVs and tablets are unchanged.
+- **Phones: everything scaled to fit.** Each phone draws the screens in proportion to its own
+  width, so labels are no longer cut off or overlapping, especially in portrait. TVs and tablets
+  are unchanged.
 
 ## 0.12.2
 

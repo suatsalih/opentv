@@ -636,22 +636,26 @@ fun isRunningOnTelevision(context: Context): Boolean {
 
 /**
  * The layouts are sized for a TV across the room. On a phone that leaves too little room — labels
- * get cut off, especially in portrait — so phones get everything drawn slightly smaller, the way
- * a "display size: small" setting would. Tablets and TVs are unchanged.
+ * get cut off, especially in portrait — so a phone draws everything in proportion to its own
+ * width: a narrow phone a little smaller, a large one barely at all, as if the layouts had been
+ * made for it. TVs and tablets (600 dp and wider) are never touched.
  */
 @Composable
 private fun PhoneScale(isTelevision: Boolean, content: @Composable () -> Unit) {
-    val configuration = LocalConfiguration.current
-    if (isTelevision || configuration.smallestScreenWidthDp >= 600) {
+    val smallestWidth = LocalConfiguration.current.smallestScreenWidthDp
+    if (isTelevision || smallestWidth >= PHONE_MAX_WIDTH_DP) {
         content()
         return
     }
+    val scale = (smallestWidth / PHONE_DESIGN_WIDTH_DP).coerceIn(PHONE_MIN_SCALE, 1f)
     val base = LocalDensity.current
     CompositionLocalProvider(
-        LocalDensity provides Density(base.density * PHONE_SCALE, base.fontScale),
+        LocalDensity provides Density(base.density * scale, base.fontScale),
         content = content,
     )
 }
 
-private const val PHONE_SCALE = 0.85f
-
+/** Width the layouts need to fit without squeezing; narrower phones scale down to match. */
+private const val PHONE_DESIGN_WIDTH_DP = 480f
+private const val PHONE_MIN_SCALE = 0.75f
+private const val PHONE_MAX_WIDTH_DP = 600
