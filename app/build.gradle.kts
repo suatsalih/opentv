@@ -14,8 +14,8 @@ android {
         applicationId = "io.github.suatsalih.opentv"
         minSdk = 23
         targetSdk = 35
-        versionCode = 22
-        versionName = "0.12.0"
+        versionCode = 23
+        versionName = "0.12.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -82,6 +82,8 @@ android {
         // Premium is a one-off in-app purchase.
         create("play") {
             dimension = "store"
+            // Play's automatic protection (anti-tamper for Premium) needs Android 7.0+.
+            minSdk = 24
             buildConfigField("boolean", "SELF_UPDATE", "false")
             buildConfigField("boolean", "DONATIONS", "false")
         }
