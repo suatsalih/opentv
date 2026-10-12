@@ -5,6 +5,7 @@
  */
 package app.opentv.recording
 
+import android.Manifest
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -12,9 +13,11 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import app.opentv.MainActivity
 import app.opentv.R
 import app.opentv.core.RecordingSignals
@@ -157,6 +160,13 @@ class RecordingAlarmReceiver : BroadcastReceiver() {
     }
 
     private fun safeNotify(context: Context, id: Int, notification: Notification) {
+        // Android 13+: the user can refuse notifications. Skip quietly rather than throw.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
         runCatching { NotificationManagerCompat.from(context).notify(id, notification) }
     }
 

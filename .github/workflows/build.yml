@@ -33,11 +33,9 @@ jobs:
       - name: Unit tests
         run: ./gradlew test --stacktrace
 
-      # Android's static checks across the whole app. Reported, not yet blocking: the first
-      # report is being worked through; flip continue-on-error off once it is clean.
+      # Android's static checks across the whole app. Any lint error fails the build.
       - name: Lint
-        run: ./gradlew lintDebug --stacktrace
-        continue-on-error: true
+        run: ./gradlew lintDebug
 
       - name: Print lint findings
         if: always()
