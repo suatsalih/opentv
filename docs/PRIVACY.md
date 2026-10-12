@@ -14,9 +14,16 @@ Everything lives in a SQLite database in the app's private storage on your devic
 
 None of it is uploaded anywhere. There is no account to create and no server to sync with.
 
+## Purchases (Google Play edition)
+
+Buying OpenTV Premium is handled entirely by Google Play: OpenTV never sees your payment details.
+The app asks Google Play whether this Google account owns Premium and keeps a single yes/no on
+the device so it can open unlocked while offline. Google's own privacy policy covers the purchase.
+
 ## Who your device talks to
 
-Only your provider, and only at the address you entered. Channel logos and posters are fetched
+Only your provider, at the address you entered — and, in the Google Play edition, Google Play
+to check or make the Premium purchase. Channel logos and posters are fetched
 from whatever URLs your provider puts in its catalogue, which are usually its own servers but
 may be third parties — that is your provider's choice, not ours.
 
@@ -34,7 +41,7 @@ offers an HTTPS endpoint, use it.
 
 Removing the app removes the database and everything in it.
 
-## Reporting a privacy problem
+## Contact
 
-Open an issue. If it involves something you would rather not post publicly, say so in the issue
-without the details and a maintainer will arrange somewhere better.
+Questions or privacy concerns: **suat.salih@gmail.com**, or open an issue at
+https://github.com/suatsalih/opentv/issues for anything that can be public.

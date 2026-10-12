@@ -95,6 +95,7 @@ import androidx.media3.common.Tracks
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
+import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.core.ServiceLocator
 import app.opentv.core.SleepTimer
@@ -258,7 +259,7 @@ fun PlayerScreen(
         val active = activeRecordings.firstOrNull { it.channelId == currentId }
         if (active != null) {
             graph.recordingEngine.stop(active.id)
-        } else {
+        } else if (Premium.require(Premium.Feature.RECORDING)) {
             val channel = variants.firstOrNull { it.id == currentId } ?: return
             scope.launch { graph.recordingEngine.startChannel(channel) }
             if (RecordingBackgroundPrompt.shouldShow(context)) {

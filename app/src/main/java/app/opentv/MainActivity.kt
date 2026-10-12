@@ -537,8 +537,12 @@ private fun OpenTvApp(isTelevision: Boolean) {
             }
         }
 
-        // Sits above the whole nav graph so a found update can prompt from any screen.
-        UpdateGate()
+        // Sits above the whole nav graph so a found update can prompt from any screen. Only the
+        // sideloaded edition updates itself; on Google Play, Play does it.
+        if (BuildConfig.SELF_UPDATE) UpdateGate()
+
+        // The "OpenTV Premium" dialog, raised by any gated feature from any screen.
+        app.opentv.premium.PremiumGate()
 
         // "About to switch to a recording" banner — shows 30s before an auto-switch fires.
         RecordingSwitchBanner()

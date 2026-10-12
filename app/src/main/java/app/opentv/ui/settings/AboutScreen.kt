@@ -44,6 +44,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.opentv.BuildConfig
+import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.core.ServiceLocator
 import app.opentv.update.UpdateChecker
@@ -77,35 +78,38 @@ fun AboutScreen(onBack: () -> Unit) {
 
         Section(stringResource(R.string.about_version)) {
             Text("OpenTV ${BuildConfig.VERSION_NAME}", style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(12.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                OutlinedButton(
-                    enabled = !checking,
-                    onClick = {
-                        checking = true
-                        updateLine = null
-                        scope.launch {
-                            val graph = ServiceLocator.get(context)
-                            val update = runCatching {
-                                UpdateChecker(graph.httpClient, BuildConfig.VERSION_NAME).check()
-                            }.getOrNull()
-                            updateLine = when {
-                                update != null -> context.getString(R.string.about_update_available, update.versionName)
-                                else -> context.getString(R.string.about_up_to_date)
+            // Only the sideloaded edition checks for and installs its own updates; Play does it otherwise.
+            if (BuildConfig.SELF_UPDATE) {
+                Spacer(Modifier.height(12.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    OutlinedButton(
+                        enabled = !checking,
+                        onClick = {
+                            checking = true
+                            updateLine = null
+                            scope.launch {
+                                val graph = ServiceLocator.get(context)
+                                val update = runCatching {
+                                    UpdateChecker(graph.httpClient, BuildConfig.VERSION_NAME).check()
+                                }.getOrNull()
+                                updateLine = when {
+                                    update != null -> context.getString(R.string.about_update_available, update.versionName)
+                                    else -> context.getString(R.string.about_up_to_date)
+                                }
+                                // Raise the shared update prompt right here — UpdateGate overlays every
+                                // screen, so the install dialog appears over About immediately.
+                                if (update != null) {
+                                    app.opentv.update.UpdateHub.state.value =
+                                        app.opentv.update.UpdateUiState.Available(update)
+                                }
+                                checking = false
                             }
-                            // Raise the shared update prompt right here — UpdateGate overlays every
-                            // screen, so the install dialog appears over About immediately.
-                            if (update != null) {
-                                app.opentv.update.UpdateHub.state.value =
-                                    app.opentv.update.UpdateUiState.Available(update)
-                            }
-                            checking = false
-                        }
-                    },
-                ) { Text(if (checking) stringResource(R.string.about_checking) else stringResource(R.string.about_check_updates)) }
-                updateLine?.let {
-                    Spacer(Modifier.width(16.dp))
-                    Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                        },
+                    ) { Text(if (checking) stringResource(R.string.about_checking) else stringResource(R.string.about_check_updates)) }
+                    updateLine?.let {
+                        Spacer(Modifier.width(16.dp))
+                        Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                    }
                 }
             }
         }
@@ -132,32 +136,46 @@ fun AboutScreen(onBack: () -> Unit) {
 
         Spacer(Modifier.height(16.dp))
 
-        Section(stringResource(R.string.about_support_title)) {
-            Text(
-                stringResource(R.string.about_support_body),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(12.dp))
-            LinkLine(
-                stringResource(R.string.about_donate_paypal),
-                "suat.salih@gmail.com",
-                url = "https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0",
-            )
-            Spacer(Modifier.height(12.dp))
-            val donateQr = remember { QrCodes.render("https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0", 400) }
-            donateQr?.let { bmp ->
-                Image(
-                    bitmap = bmp.asImageBitmap(),
-                    contentDescription = stringResource(R.string.about_scan_to_donate),
-                    modifier = Modifier.size(180.dp).clip(RoundedCornerShape(8.dp)),
-                )
-                Spacer(Modifier.height(6.dp))
+        // The sideloaded edition carries the PayPal link; the Google Play edition takes payment only
+        // through Play (Play payments policy), so it offers Premium here instead.
+        if (BuildConfig.DONATIONS) {
+            Section(stringResource(R.string.about_support_title)) {
                 Text(
-                    stringResource(R.string.about_scan_to_donate),
+                    stringResource(R.string.about_support_body),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                Spacer(Modifier.height(12.dp))
+                LinkLine(
+                    stringResource(R.string.about_donate_paypal),
+                    "suat.salih@gmail.com",
+                    url = "https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0",
+                )
+                Spacer(Modifier.height(12.dp))
+                val donateQr = remember { QrCodes.render("https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0", 400) }
+                donateQr?.let { bmp ->
+                    Image(
+                        bitmap = bmp.asImageBitmap(),
+                        contentDescription = stringResource(R.string.about_scan_to_donate),
+                        modifier = Modifier.size(180.dp).clip(RoundedCornerShape(8.dp)),
+                    )
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        stringResource(R.string.about_scan_to_donate),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        } else {
+            Section(stringResource(R.string.premium_title)) {
+                Text(
+                    stringResource(R.string.premium_about_body),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(12.dp))
+                OutlinedButton(onClick = Premium::showDialog) { Text(stringResource(R.string.premium_see)) }
             }
         }
 

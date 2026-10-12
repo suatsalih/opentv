@@ -7,6 +7,8 @@ package app.opentv.ui
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateDpAsState
+import app.opentv.premium.Premium
+import app.opentv.premium.PremiumLockedPanel
 import app.opentv.R
 import app.opentv.core.findActivity
 import app.opentv.core.StatusBus
@@ -107,6 +109,7 @@ fun MainScreen(
     // Content-type toggles: a switched-off type has its tab hidden here (and its sync skipped in
     // CatalogRepository). Recordings is never a content type, so it always stays — which also means
     // there is always at least one tab and never a blank shell, even with all three types off.
+    val premium by Premium.owned.collectAsState()
     val context = LocalContext.current
     val settings = remember { AppSettings.get(context) }
     val liveEnabled by settings.liveEnabled.collectAsState()
@@ -182,21 +185,26 @@ fun MainScreen(
                     onRefresh = onRefresh,
                     onPlayCatchup = onPlayCatchup,
                 )
-                Tab.MOVIES -> MoviesScreen(
+                // Movies, Shows and Recordings are Premium: locked, they explain and offer the upgrade.
+                Tab.MOVIES -> if (!premium) PremiumLockedPanel(stringResource(Tab.MOVIES.labelRes)) else MoviesScreen(
                     onOpenMovie = onOpenMovie,
                     onResume = onResume,
                     onOpenSearch = onOpenSearch,
                     hasSources = hasSources,
                     isSyncing = isSyncing,
                 )
-                Tab.SHOWS -> SeriesScreen(
+                Tab.SHOWS -> if (!premium) PremiumLockedPanel(stringResource(Tab.SHOWS.labelRes)) else SeriesScreen(
                     onOpenSeries = onOpenSeries,
                     onResume = onResume,
                     onOpenSearch = onOpenSearch,
                     hasSources = hasSources,
                     isSyncing = isSyncing,
                 )
-                Tab.RECORDINGS -> RecordingsScreen(onPlay = onPlayRecording)
+                Tab.RECORDINGS -> if (!premium) {
+                    PremiumLockedPanel(stringResource(Tab.RECORDINGS.labelRes))
+                } else {
+                    RecordingsScreen(onPlay = onPlayRecording)
+                }
             }
         }
       }

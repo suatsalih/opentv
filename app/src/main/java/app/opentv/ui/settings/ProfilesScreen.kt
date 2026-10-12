@@ -35,6 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.ui.ProfilesViewModel
 import app.opentv.ui.channels.OnScreenKeyboard
@@ -75,7 +76,10 @@ fun ProfilesScreen(
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(stringResource(R.string.profiles_title), style = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.weight(1f))
-            Button(onClick = { editing = NEW }) { Text(stringResource(R.string.profiles_add)) }
+            // Extra profiles are Premium; the default profile is always there.
+            Button(onClick = { if (Premium.require(Premium.Feature.PROFILES)) editing = NEW }) {
+                Text(stringResource(R.string.profiles_add))
+            }
             Spacer(Modifier.width(12.dp))
             OutlinedButton(onClick = onBack) { Text(stringResource(R.string.common_done)) }
         }
