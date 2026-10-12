@@ -40,7 +40,7 @@ jobs:
       - name: Print lint findings
         if: always()
         run: |
-          for f in $(find app/build -name 'lint-results-*debug.txt'); do
+          for f in $(find app/build -iname 'lint-results-*debug.txt'); do
             echo "== $f"
             grep -E ': (Error|Warning):' "$f" | sed 's#.*/app/src/#app/src/#' || true
           done
