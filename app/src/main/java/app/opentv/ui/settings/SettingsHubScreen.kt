@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.filled.WorkspacePremium
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Dns
 import androidx.compose.material.icons.filled.Extension
@@ -37,6 +38,7 @@ import androidx.compose.material.icons.filled.Tv
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,6 +52,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import app.opentv.premium.Premium
 import app.opentv.R
 
 /**
@@ -71,7 +74,19 @@ fun SettingsHubScreen(
     onOpenAbout: () -> Unit,
     onBack: () -> Unit,
 ) {
-    val entries = listOf(
+    val premiumOwned by Premium.owned.collectAsState()
+    val entries = listOfNotNull(
+        // Only the Google Play edition sells Premium; the sideloaded one has everything unlocked.
+        if (Premium.purchasable) {
+            HubEntry(
+                Icons.Filled.WorkspacePremium,
+                stringResource(R.string.premium_settings_title),
+                stringResource(if (premiumOwned) R.string.premium_settings_owned else R.string.premium_settings_free),
+                Premium::showDialog,
+            )
+        } else {
+            null
+        },
         HubEntry(Icons.Filled.Dns, stringResource(R.string.settings_providers_title), stringResource(R.string.settings_providers_subtitle), onOpenProviders),
         HubEntry(Icons.Filled.Extension, stringResource(R.string.settings_addons_title), stringResource(R.string.settings_addons_subtitle), onOpenAddons),
         HubEntry(Icons.Filled.LiveTv, stringResource(R.string.settings_guide_title), stringResource(R.string.settings_guide_subtitle), onOpenGuide),

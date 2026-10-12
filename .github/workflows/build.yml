@@ -31,33 +31,35 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Unit tests
-        run: ./gradlew test --stacktrace
+        run: ./gradlew testGithubDebugUnitTest testPlayDebugUnitTest --stacktrace
 
-      # Android's static checks across the whole app. Any lint error fails the build.
+      # Android's static checks across the whole app, both editions. Any lint error fails the build.
       - name: Lint
-        run: ./gradlew lintDebug
+        run: ./gradlew lintGithubDebug lintPlayDebug
 
       - name: Print lint findings
         if: always()
         run: |
-          f=$(find app/build -name 'lint-results-debug.txt' | head -1)
-          if [ -n "$f" ]; then grep -E ': (Error|Warning):' "$f" | sed 's#.*/app/src/#app/src/#' || true; fi
+          for f in $(find app/build -name 'lint-results-*debug.txt'); do
+            echo "== $f"
+            grep -E ': (Error|Warning):' "$f" | sed 's#.*/app/src/#app/src/#' || true
+          done
 
       - name: Upload lint report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lint-report
-          path: app/build/reports/lint-results-debug.*
+          path: app/build/reports/lint-results-*
 
-      - name: Assemble debug APK
+      - name: Assemble debug APKs (both editions)
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
           name: opentv-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/*/debug/*.apk
           if-no-files-found: error
 
       - name: Upload test reports

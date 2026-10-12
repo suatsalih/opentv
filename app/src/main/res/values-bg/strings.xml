@@ -451,4 +451,24 @@
     <string name="settings_tmdb_save">Запази ключа</string>
     <string name="settings_tmdb_saved">TMDB ключът е запазен</string>
     <string name="settings_tmdb_active">Активен</string>
+
+    <!-- OpenTV Premium (Google Play edition) -->
+    <string name="premium_title">OpenTV Premium</string>
+    <string name="premium_body">Отключете всичко с едно плащане — без абонамент:\n• Няколко доставчика\n• Гледане на пропуснати предавания\n• Запис\n• Филми и сериали\n• Профили за цялото домакинство\n\nБезплатната версия запазва телевизията на живо и програмата за един доставчик — завинаги.</string>
+    <string name="premium_buy">Вземете Premium</string>
+    <string name="premium_buy_price">Вземете Premium — %1$s</string>
+    <string name="premium_restore">Възстановяване на покупка</string>
+    <string name="premium_not_now">Не сега</string>
+    <string name="premium_owned_title">Имате Premium</string>
+    <string name="premium_owned_body">Всичко е отключено. Благодарим, че подкрепяте OpenTV.</string>
+    <string name="premium_msg_pending">Плащането ви се обработва. Premium ще се отключи веднага щом приключи.</string>
+    <string name="premium_msg_unavailable">Google Play не е достъпен в момента. Проверете връзката си и дали сте влезли в Google Play, после опитайте отново.</string>
+    <string name="premium_msg_nothing_to_restore">Не е открита покупка на Premium в този профил в Google.</string>
+    <string name="premium_msg_error">Покупката не бе завършена. Моля, опитайте отново.</string>
+    <string name="premium_locked_body">Това е част от OpenTV Premium — едно плащане, без абонамент.</string>
+    <string name="premium_see">Вижте Premium</string>
+    <string name="premium_settings_title">Premium</string>
+    <string name="premium_settings_free">Отключете доставчици, пропуснати предавания, запис, филми и сериали</string>
+    <string name="premium_settings_owned">Отключено — благодарим</string>
+    <string name="premium_about_body">Телевизията на живо и програмата са безплатни. Premium отключва останалото с едно плащане — без абонамент — и покрива времето за нови функции, поправки и поддръжка.</string>
 </resources>

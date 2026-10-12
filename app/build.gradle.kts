@@ -67,6 +67,26 @@ android {
         }
     }
 
+    // Two editions of the same app, built from the same code.
+    flavorDimensions += "store"
+    productFlavors {
+        // Sideloaded edition: GitHub releases, the install page and the Downloader code. It
+        // updates itself and carries the PayPal donation link.
+        create("github") {
+            dimension = "store"
+            buildConfigField("boolean", "SELF_UPDATE", "true")
+            buildConfigField("boolean", "DONATIONS", "true")
+        }
+        // Google Play edition: Play installs the updates and takes the payments, so there is no
+        // self-updater, no install-packages permission and no outside payment link (Play policy).
+        // Premium is a one-off in-app purchase.
+        create("play") {
+            dimension = "store"
+            buildConfigField("boolean", "SELF_UPDATE", "false")
+            buildConfigField("boolean", "DONATIONS", "false")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -102,6 +122,9 @@ ksp {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.3")
+
+    // Google Play Billing, for the one-off Premium purchase. Only the Play edition includes it.
+    "playImplementation"("com.android.billingclient:billing:8.0.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

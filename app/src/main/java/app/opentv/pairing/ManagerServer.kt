@@ -13,6 +13,7 @@ import app.opentv.data.model.SourceKind
 import app.opentv.data.model.shownName
 import app.opentv.data.repo.CatalogRepository
 import app.opentv.data.repo.SourceRepository
+import app.opentv.premium.Premium
 import app.opentv.recording.SmbClient
 import app.opentv.recording.SmbConfig
 import java.io.BufferedReader
@@ -28,6 +29,7 @@ import kotlin.concurrent.thread
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -386,6 +388,13 @@ class ManagerServer(
             return
         }
         val result = runBlocking {
+            // A second provider is Premium; unlocking happens on the TV, not from the phone page.
+            if (!Premium.owned.value && sourceRepository.observeAll().first().isNotEmpty()) {
+                return@runBlocking AddResultDto(
+                    ok = false,
+                    error = "Adding another provider needs OpenTV Premium. Unlock it on the TV in Settings → Premium.",
+                )
+            }
             val id = sourceRepository.save(draft)
             val saved = sourceRepository.byId(id)
                 ?: return@runBlocking AddResultDto(ok = false, error = "Could not save the source.")

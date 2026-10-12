@@ -451,4 +451,24 @@
     <string name="settings_tmdb_save">Lagre nøkkel</string>
     <string name="settings_tmdb_saved">TMDB-nøkkel lagret</string>
     <string name="settings_tmdb_active">Aktiv</string>
+
+    <!-- OpenTV Premium (Google Play edition) -->
+    <string name="premium_title">OpenTV Premium</string>
+    <string name="premium_body">Lås opp alt med én betaling — ingen abonnement:\n• Flere leverandører\n• Catch-up\n• Opptak\n• Filmer og serier\n• Profiler til hele husstanden\n\nGratisversjonen beholder direkte-TV og guiden for én leverandør — for alltid.</string>
+    <string name="premium_buy">Få Premium</string>
+    <string name="premium_buy_price">Få Premium — %1$s</string>
+    <string name="premium_restore">Gjenopprett kjøp</string>
+    <string name="premium_not_now">Ikke nå</string>
+    <string name="premium_owned_title">Du har Premium</string>
+    <string name="premium_owned_body">Alt er låst opp. Takk for at du støtter OpenTV.</string>
+    <string name="premium_msg_pending">Betalingen din venter. Premium låses opp så snart den går gjennom.</string>
+    <string name="premium_msg_unavailable">Google Play er ikke tilgjengelig akkurat nå. Sjekk at du er på nett og logget på Google Play, og prøv igjen.</string>
+    <string name="premium_msg_nothing_to_restore">Fant ikke noe Premium-kjøp på denne Google-kontoen.</string>
+    <string name="premium_msg_error">Kjøpet gikk ikke gjennom. Prøv igjen.</string>
+    <string name="premium_locked_body">Dette er en del av OpenTV Premium — én betaling, ingen abonnement.</string>
+    <string name="premium_see">Se Premium</string>
+    <string name="premium_settings_title">Premium</string>
+    <string name="premium_settings_free">Lås opp flere leverandører, catch-up, opptak, filmer og serier</string>
+    <string name="premium_settings_owned">Låst opp — takk</string>
+    <string name="premium_about_body">Direkte-TV og guiden er gratis. Premium låser opp resten med én betaling — ingen abonnement — og betaler for tiden som går med til nye funksjoner, rettelser og støtte.</string>
 </resources>

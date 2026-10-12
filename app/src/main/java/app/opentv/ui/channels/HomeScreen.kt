@@ -69,6 +69,7 @@ import android.content.Intent
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.compose.ui.window.Dialog
+import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.core.AppSettings
 import app.opentv.core.ServiceLocator
@@ -403,7 +404,7 @@ fun HomeScreen(
                     if (active != null) {
                         graph.recordingEngine.stop(active.id)
                         Toast.makeText(context, context.getString(R.string.rec_recording_stopped), Toast.LENGTH_SHORT).show()
-                    } else {
+                    } else if (Premium.require(Premium.Feature.RECORDING)) {
                         recordScope.launch { graph.recordingEngine.startChannel(row.primary, row.now) }
                         Toast.makeText(context, context.getString(R.string.rec_recording_started_see_tab, row.primary.shownName), Toast.LENGTH_LONG).show()
                         promptBackgroundIfNeeded()
@@ -567,6 +568,10 @@ fun HomeScreen(
                         recordTarget = null
                     }
                     liveNow -> RecordActionRow(stringResource(R.string.rec_record_now), primary = true) {
+                        if (!Premium.require(Premium.Feature.RECORDING)) {
+                            recordTarget = null
+                            return@RecordActionRow
+                        }
                         recordScope.launch { graph.recordingEngine.startChannel(chosenVariant, programme) }
                         Toast.makeText(context, context.getString(R.string.rec_recording_channel, channel.shownName), Toast.LENGTH_LONG).show()
                         promptBackgroundIfNeeded()
@@ -574,6 +579,10 @@ fun HomeScreen(
                     }
                     // A finished programme on a catch-up channel plays back from the archive.
                     isPast && channel.tvArchive -> RecordActionRow(stringResource(R.string.guide_watch_from_start), primary = true) {
+                        if (!Premium.require(Premium.Feature.CATCHUP)) {
+                            recordTarget = null
+                            return@RecordActionRow
+                        }
                         recordScope.launch {
                             val source = graph.sourceRepository.byId(channel.sourceId)
                             if (source == null) {
@@ -592,6 +601,10 @@ fun HomeScreen(
                         recordTarget = null
                     }
                     !isPast -> RecordActionRow(stringResource(R.string.rec_schedule_recording), primary = true) {
+                        if (!Premium.require(Premium.Feature.RECORDING)) {
+                            recordTarget = null
+                            return@RecordActionRow
+                        }
                         recordScope.launch { graph.recordingEngine.scheduleProgramme(chosenVariant, programme) }
                         Toast.makeText(context, context.getString(R.string.rec_scheduled_title, programme.title), Toast.LENGTH_LONG).show()
                         promptBackgroundIfNeeded()
@@ -753,6 +766,10 @@ fun HomeScreen(
                         }
                     } else {
                         RecordActionRow(stringResource(R.string.guide_record_now_playing), primary = true) {
+                            if (!Premium.require(Premium.Feature.RECORDING)) {
+                                channelMenu = null
+                                return@RecordActionRow
+                            }
                             recordScope.launch { graph.recordingEngine.startChannel(channel, nowProg) }
                             Toast.makeText(context, context.getString(R.string.rec_recording_started_see_tab, channel.shownName), Toast.LENGTH_LONG).show()
                             promptBackgroundIfNeeded()

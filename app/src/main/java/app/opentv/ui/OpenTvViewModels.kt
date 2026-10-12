@@ -29,6 +29,7 @@ import app.opentv.data.repo.GenreGroup
 import app.opentv.data.repo.MovieVariantGroup
 import app.opentv.data.repo.PersonTitle
 import app.opentv.data.repo.distinctByQuality
+import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.pairing.ManagerServer
 import app.opentv.sync.NasSync
@@ -36,6 +37,7 @@ import app.opentv.sync.SyncBundle
 import app.opentv.sync.SyncClient
 import app.opentv.sync.SyncPosition
 import app.opentv.sync.SyncServer
+import kotlinx.coroutines.flow.first
 import kotlinx.serialization.json.Json
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -113,6 +115,13 @@ class SourcesViewModel(app: Application) : AndroidViewModel(app) {
     /** Saves, then immediately pulls the catalogue so the user sees channels, not a spinner. */
     fun saveAndSync(draft: Source, onDone: (Boolean) -> Unit = {}) {
         viewModelScope.launch {
+            // A second provider is Premium. Editing an existing one (id != 0) is always allowed.
+            if (draft.id == 0L && graph.sourceRepository.observeAll().first().isNotEmpty() &&
+                !Premium.require(Premium.Feature.PROVIDERS)
+            ) {
+                onDone(false)
+                return@launch
+            }
             _ui.value = _ui.value.copy(syncing = true, syncMessage = "Saving source…")
             val id = graph.sourceRepository.save(draft)
             val saved = graph.sourceRepository.byId(id)

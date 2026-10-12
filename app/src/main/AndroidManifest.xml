@@ -37,7 +37,6 @@
       The system still shows its own install screen and, first time, asks the user to allow
       installs from OpenTV — we never install silently.
     -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <!--
       Declared not-required so the same APK installs on phones, tablets, Android TV and
@@ -125,15 +124,6 @@
         </receiver>
 
         <!-- Serves the downloaded update APK to the system installer via a content:// uri. -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
 
     </application>
 </manifest>

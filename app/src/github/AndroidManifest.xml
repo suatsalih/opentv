@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of OpenTV.
+  ~ Copyright (C) 2026 The OpenTV Contributors
+  ~ Licensed under the GNU General Public License v3.0 or later.
+  -->
+<!--
+  The sideloaded (GitHub) edition only: installing its own updates needs the install permission
+  and a FileProvider to hand the downloaded APK to the system installer. The Play edition has
+  neither — Google Play installs its updates.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <application>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

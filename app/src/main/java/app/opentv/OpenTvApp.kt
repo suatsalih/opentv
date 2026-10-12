@@ -58,6 +58,8 @@ class OpenTvApp : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        // Learn as early as possible whether Premium is owned, so gated screens never flash a lock.
+        app.opentv.premium.Premium.start(this)
         val graph = ServiceLocator.get(this)
         SyncWorker.schedule(this)
 
