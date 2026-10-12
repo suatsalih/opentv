@@ -24,11 +24,14 @@ import androidx.compose.foundation.focusable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
@@ -37,6 +40,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -49,7 +53,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -108,11 +115,15 @@ class MainActivity : ComponentActivity() {
                 AppSettings.ThemeMode.SYSTEM -> isTelevision || isSystemInDarkTheme()
             }
             OpenTvTheme(darkTheme = darkTheme) {
+                // Phones draw edge to edge (forced from Android 15), so keep the UI clear of the
+                // status bar, the gesture bar and any camera cut-out. TVs report no insets.
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    OpenTvApp(isTelevision = isTelevision)
+                    Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+                        PhoneScale(isTelevision) { OpenTvApp(isTelevision = isTelevision) }
+                    }
                 }
             }
         }
@@ -622,3 +633,29 @@ fun isRunningOnTelevision(context: Context): Boolean {
     return packageManager.hasSystemFeature("android.software.leanback") ||
         packageManager.hasSystemFeature("android.hardware.type.television")
 }
+
+/**
+ * The layouts are sized for a TV across the room. On a phone that leaves too little room — labels
+ * get cut off, especially in portrait — so a phone draws everything in proportion to its own
+ * width: a narrow phone a little smaller, a large one barely at all, as if the layouts had been
+ * made for it. TVs and tablets (600 dp and wider) are never touched.
+ */
+@Composable
+private fun PhoneScale(isTelevision: Boolean, content: @Composable () -> Unit) {
+    val smallestWidth = LocalConfiguration.current.smallestScreenWidthDp
+    if (isTelevision || smallestWidth >= PHONE_MAX_WIDTH_DP) {
+        content()
+        return
+    }
+    val scale = (smallestWidth / PHONE_DESIGN_WIDTH_DP).coerceIn(PHONE_MIN_SCALE, 1f)
+    val base = LocalDensity.current
+    CompositionLocalProvider(
+        LocalDensity provides Density(base.density * scale, base.fontScale),
+        content = content,
+    )
+}
+
+/** Width the layouts need to fit without squeezing; narrower phones scale down to match. */
+private const val PHONE_DESIGN_WIDTH_DP = 480f
+private const val PHONE_MIN_SCALE = 0.75f
+private const val PHONE_MAX_WIDTH_DP = 600

@@ -14,8 +14,8 @@ android {
         applicationId = "io.github.suatsalih.opentv"
         minSdk = 23
         targetSdk = 36
-        versionCode = 24
-        versionName = "0.12.2"
+        versionCode = 25
+        versionName = "0.12.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -97,6 +97,14 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    // Play would otherwise install only the languages the phone is set to, and the in-app language
+    // picker would find nothing to switch to. Every language ships with every install.
+    bundle {
+        language {
+            enableSplit = false
+        }
     }
 
     buildFeatures {
