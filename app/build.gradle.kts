@@ -8,14 +8,14 @@ plugins {
 
 android {
     namespace = "app.opentv"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "io.github.suatsalih.opentv"
         minSdk = 23
-        targetSdk = 35
-        versionCode = 23
-        versionName = "0.12.1"
+        targetSdk = 36
+        versionCode = 24
+        versionName = "0.12.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
