@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.9
+
+- **Reminders no longer crash when notifications are off.** On Android 13 and newer you can turn
+  off OpenTV's notifications; a programme reminder going off after that could crash the app in the
+  background. It now checks first and skips quietly. Recording alerts check the same way.
+- **Fully translated again.** The exit dialog, Edit provider, show/hide password, the support
+  message and the live-recording warnings were still in English in every other language. They are
+  now translated into all 30.
+
 ## 0.11.8
 
 - **Edit a saved provider.** Settings → Providers now has an **Edit** button on each provider, so you
