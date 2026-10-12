@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.12.1
+
+- **Google Play edition needs Android 7.0 or newer**, so Google Play can protect the app against
+  tampering. The GitHub edition still runs on Android 6.0.
+
 ## 0.12.0
 
 - **OpenTV on Google Play.** A Google Play edition is now built alongside the GitHub one. On Play,

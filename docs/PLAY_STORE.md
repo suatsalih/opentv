@@ -79,7 +79,7 @@ Play Console → **Create app**
 
 | Question | Answer |
 |---|---|
-| App name | `OpenTV - IPTV Player` |
+| App name | `OpenTV: IPTV Player & TV Guide` |
 | Default language | English (United Kingdom) – en-GB |
 | App or game | **App** |
 | Free or paid | **Free** (Premium is an in-app purchase. A free app can never become paid later) |
@@ -98,7 +98,7 @@ which takes days.
 ### App name (30 characters max)
 
 ```
-OpenTV - IPTV Player
+OpenTV: IPTV Player & TV Guide
 ```
 
 ### Short description (80 characters max)
