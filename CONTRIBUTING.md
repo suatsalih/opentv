@@ -94,3 +94,10 @@ a person is not.
 Maintainers are volunteers. Nobody here owes anyone a fix by a deadline. Equally, if a
 maintainer goes quiet, that is what forking is for — the licence guarantees you that option,
 permanently, and using it is not a betrayal. It is the design working.
+
+## Translations
+
+The app ships in English plus 30 languages (`app/src/main/res/values-*/strings.xml`). Every new
+English string needs a translation in each of them — the build fails on a missing one, so the
+gap is caught when the string is added rather than discovered by users. Translations by native
+speakers are very welcome; corrections to existing ones even more so.
