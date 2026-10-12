@@ -6,13 +6,11 @@ No account. No subscription. No server of ours between you and your provider.
 
 [![Build](https://github.com/suatsalih/opentv/actions/workflows/build.yml/badge.svg)](https://github.com/suatsalih/opentv/actions/workflows/build.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsors-ea4aaa.svg)](https://github.com/sponsors/suatsalih)
 
 ---
 
 > **Support OpenTV** — it's free and always will be. If it saved you from a dead "lifetime"
-> app, you can chip in via **[GitHub Sponsors](https://github.com/sponsors/suatsalih)**
-> or **[PayPal](https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0)**.
+> app, you can chip in via **[PayPal](https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0)**.
 > Entirely optional; the app is never paywalled.
 
 ## Why this exists
@@ -143,8 +141,7 @@ OpenTV is free and always will be. There is nothing to buy, no premium tier, and
 subscription — the failure mode this project was built in response to is a promise nobody
 could keep, so we are not making one.
 
-If it saves you money or annoyance and you want to say thanks, you can sponsor the project via
-[GitHub Sponsors](https://github.com/sponsors/suatsalih) or
+If it saves you money or annoyance and you want to say thanks, you can support the project via
 [PayPal](https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0)
 — see [.github/FUNDING.yml](.github/FUNDING.yml). Tips fund nothing except spare-evening development;
 nobody is owed a feature for one, and nothing is gated behind one.

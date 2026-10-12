@@ -139,8 +139,6 @@ fun AboutScreen(onBack: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.height(12.dp))
-            LinkLine(stringResource(R.string.about_sponsor_github), "github.com/sponsors/suatsalih")
-            Spacer(Modifier.height(12.dp))
             LinkLine(
                 stringResource(R.string.about_donate_paypal),
                 "suat.salih@gmail.com",

@@ -34,8 +34,8 @@ scope, and paste that when prompted.
 
 ## 3. Funding links (optional)
 
-The "Sponsor" button on the repo comes from `.github/FUNDING.yml` — it points at GitHub Sponsors
-and a PayPal donate link. Edit that file to change them. Everything else already points at
+The "Sponsor" button on the repo comes from `.github/FUNDING.yml` — it points at a PayPal
+donate link. Edit that file to change them. Everything else already points at
 `suatsalih/opentv`.
 
 ## 4. Turn on Pages
