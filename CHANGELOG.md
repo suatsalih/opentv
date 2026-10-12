@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.0
+
+- **OpenTV on Google Play.** A Google Play edition is now built alongside the GitHub one. On Play,
+  Live TV and the guide are free; **OpenTV Premium**, a one-off purchase, unlocks several
+  providers, catch-up, recording, movies & series and profiles. Updates come through Play.
+- **The GitHub edition is unchanged:** free for everyone, every feature unlocked, with the built-in
+  updater and donation link.
+- **Premium in 30 languages.** The Premium screens and messages are translated like the rest of
+  the app.
+
 ## 0.11.9
 
 - **Reminders no longer crash when notifications are off.** On Android 13 and newer you can turn
