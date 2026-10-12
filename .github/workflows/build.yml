@@ -55,6 +55,11 @@ jobs:
       - name: Assemble debug APKs (both editions)
         run: ./gradlew assembleDebug --stacktrace
 
+      # The Play edition's store build (shrunk with R8, as uploaded to Play Console), so a problem
+      # in it shows up here rather than on release day. Signed with the debug key in this job.
+      - name: Build the Play bundle
+        run: ./gradlew bundlePlayRelease --stacktrace
+
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:

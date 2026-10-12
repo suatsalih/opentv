@@ -137,9 +137,17 @@ guessing. If a channel fails on your setup, [open an issue](../../issues/new/cho
 
 ## Supporting the project
 
-OpenTV is free and always will be. There is nothing to buy, no premium tier, and no lifetime
-subscription — the failure mode this project was built in response to is a promise nobody
-could keep, so we are not making one.
+OpenTV comes in two editions, built from this same code:
+
+- **This one — GitHub releases, the install page and the Downloader code — is free, with every
+  feature unlocked.** There is nothing to buy and no subscription.
+- **The Google Play edition** is free for Live TV and the guide with one provider, and offers
+  **OpenTV Premium** — one payment, no subscription — for several providers, catch-up,
+  recording, movies & series and profiles. Google Play does not allow outside payment links, so
+  that is how the Play edition is supported. See [docs/PLAY_STORE.md](docs/PLAY_STORE.md).
+
+Neither edition sells a "lifetime" promise — the failure mode this project was built in
+response to is a promise nobody could keep, so we are not making one.
 
 If it saves you money or annoyance and you want to say thanks, you can support the project via
 [PayPal](https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0)
