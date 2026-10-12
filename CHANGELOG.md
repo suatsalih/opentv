@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.12.2
+
+- **Built for Android 16.** OpenTV now targets the latest Android version, as Google Play requires.
+
 ## 0.12.1
 
 - **Google Play edition needs Android 7.0 or newer**, so Google Play can protect the app against
