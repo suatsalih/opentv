@@ -3,6 +3,10 @@ name: Release
 on:
   push:
     tags: ['v*']
+  # A tag created from the website's "Draft a new release" page does not fire a push event,
+  # so a published release starts the build too. The workflow then attaches the APK to it.
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:

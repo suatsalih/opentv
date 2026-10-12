@@ -226,8 +226,7 @@ class ChannelsViewModel(app: Application) : AndroidViewModel(app) {
      *
      * Providers split categories by codec — 'UK| GENERAL HD/RAW' and 'UK| GENERAL hevc'
      * are the same shelf twice. Fold them by normalised name, show the clean label, and
-     * filter across every underlying id at once. This is the on-device version of what
-     * Viewella did on a server it had to pay for.
+     * filter across every underlying id at once — on the device, with no server involved.
      */
     data class CategoryGroup(val key: String, val label: String, val ids: List<String>)
 

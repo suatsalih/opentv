@@ -33,6 +33,23 @@ jobs:
       - name: Unit tests
         run: ./gradlew test --stacktrace
 
+      # Android's static checks across the whole app. Any lint error fails the build.
+      - name: Lint
+        run: ./gradlew lintDebug
+
+      - name: Print lint findings
+        if: always()
+        run: |
+          f=$(find app/build -name 'lint-results-debug.txt' | head -1)
+          if [ -n "$f" ]; then grep -E ': (Error|Warning):' "$f" | sed 's#.*/app/src/#app/src/#' || true; fi
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-debug.*
+
       - name: Assemble debug APK
         run: ./gradlew assembleDebug --stacktrace
 

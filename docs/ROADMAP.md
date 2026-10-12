@@ -2,8 +2,7 @@
 
 This is an evidence-based plan for what to build next, benchmarked against the apps people
 actually compare us to (TiviMate, IPTV Smarters Pro, Sparkle/OTT Navigator, Televizo) and
-weighted by real user demand from the TiviMate wishlist forum, IPTV subreddits, and player
-surveys. Sources are at the bottom.
+weighted by user demand. Technical references are at the bottom.
 
 ## Where we already are
 
@@ -59,11 +58,11 @@ zapping, per-channel catch-up offset (trivial once #1 ships), a stream health/co
 
 ### Also queued (from user feedback)
 
-- **Local watch-history sync (device-to-device, no backend).** Viewella synced continue-watching
-  and watched state through its servers; we do the same over the user's own LAN by extending the
+- **Local watch-history sync (device-to-device, no backend).** Some apps sync continue-watching
+  and watched state through their own servers; we do the same over the user's own LAN by extending the
   existing pairing server. Device A exposes a watch-state bundle behind a short code; device B
   pulls and merges newest-wins per item (resume positions, watched flags, favourites). No
-  credentials sync. See "Local sync without a backend" below. Demand: direct r/Viewella ask.
+  credentials sync. See "Local sync without a backend" below. Demand: direct user requests.
 - **Channel search in Live TV.** Search box over the channel list (the repository + query flow
   already exist; this is UI only). Later folds into unified live/VOD/series search.
 - **A single Settings hub.** One entry point that gathers Providers, TV guide, Display &
@@ -76,8 +75,8 @@ zapping, per-channel catch-up offset (trivial once #1 ships), a stream health/co
    clearest "why switch from TiviMate" story. Ship Xtream `xc` + M3U `append`/`default`/
    `flussonic` modes with a per-channel time offset.
 2. **Reminders + parental PIN.** Two easy wins riding directly on the EPG grid and channel
-   model we already have; the PIN also answers the r/Viewella "it's just porn now" complaint by
-   letting people hide adult categories.
+   model we already have; the PIN also lets people hide adult
+   categories.
 3. **External player hand-off.** Easy intent-based fallback that neutralises the "bad codec /
    won't play" support burden, especially on cheap Fire TV sticks — high value per line.
 4. **The easy in-player cluster:** audio/subtitle picker + aspect-ratio + sleep timer. A group
@@ -93,8 +92,8 @@ timeshift buffer.
 
 ## Local sync without a backend
 
-The goal is Viewella's cross-device continue-watching **without** the servers that made it die
-when Viewella went dark. The app already runs a small on-device HTTP server for phone-pairing;
+The goal is cross-device continue-watching **without** servers, which can disappear and take
+the feature with them. The app already runs a small on-device HTTP server for phone-pairing;
 this reuses it.
 
 - **What syncs:** resume positions, watched/finished flags, and favourites. Keyed by provider
@@ -117,21 +116,15 @@ One screen, grouped, replacing today's scattered entries:
 - **Display & playback** — theme (system/dark/light), captions default, live guide preview.
 - **Channels & categories** — hide, reorder, rename; manage favourites (the "Channel Manager"
   idea, done locally).
-- **Parental controls** — PIN, hide adult categories (rides on the category model; also answers
-  the r/Viewella "it's just porn now" complaint).
+- **Parental controls** — PIN, hide adult categories (rides on the category model).
 - **Playback & streams** — default aspect/zoom, buffer size, hardware/software decoder,
   hand-off to an external player (VLC / MX) for problem streams.
 - **Sync & backup** — local device-to-device sync (above) and export/import a settings file.
 - **About** — version + in-app update check, GPL licence, links to repo / issues / privacy, and
   the "built with AI, in the open" note.
 
-## Sources
+## References
 
-- TiviMate features — https://tivimate.co.com/app/features/
-- TiviMate wishlist (TROYPOINT) — https://troypointinsider.com/t/tivimate-feature-wish-list/153806
-- Top IPTV players 2026 (TROYPOINT) — https://troypoint.com/top-iptv-players/
 - Xtream catch-up API — https://github.com/worldofiptvcom/xtream-codes-api-documentation
 - Catch-up / timeshift explained (Tuneline) — https://tuneline.app/blog/catch-up-tv-timeshift-iptv-explained
 - Kodi IPTV Simple catchup tags — https://github.com/kodi-pvr/pvr.iptvsimple/blob/Omega/README.md
-- PiP / multiview demand (IPTV One) — https://www.iptv-one.app/en/blog/iptv-pip-guide-v2
-- IPTV Smarters Pro features — https://iptvsmarterspro.co.com/tv/
