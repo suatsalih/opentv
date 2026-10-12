@@ -33,6 +33,19 @@ jobs:
       - name: Unit tests
         run: ./gradlew test --stacktrace
 
+      # Android's static checks across the whole app. Reported, not yet blocking: the first
+      # report is being worked through; flip continue-on-error off once it is clean.
+      - name: Lint
+        run: ./gradlew lintDebug --stacktrace
+        continue-on-error: true
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-debug.*
+
       - name: Assemble debug APK
         run: ./gradlew assembleDebug --stacktrace
 

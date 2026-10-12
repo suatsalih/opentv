@@ -1,102 +1,47 @@
-# Getting this onto GitHub and onto your TV
+# Running the OpenTV project
 
-One-time setup. After this, every tagged release builds itself and appears on the install page
-automatically.
+How this repository (`suatsalih/opentv`) is set up, and how to publish a new version. The
+one-time setup is already done; this is the reference for when you need it again.
 
 ---
 
-## 1. Create the repository
+## What is already set up
 
-On [github.com/new](https://github.com/new):
+| Setting | Where | State |
+|---|---|---|
+| GitHub Actions | Settings → Actions → General | Allowed |
+| Signing key | Settings → Secrets and variables → Actions | `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD` |
+| Install page | Settings → Pages → Source: **GitHub Actions** | https://suatsalih.github.io/opentv/ |
+| Donations | `.github/FUNDING.yml`, README, About screen | PayPal: suat.salih@gmail.com |
 
-- **Name:** `opentv`
-- **Visibility:** Public — GitHub Pages and Actions are free on public repos, and the whole
-  point of the project is that people can read it
-- **Do not** tick "Add a README", ".gitignore" or "Choose a license" — this repo already has
-  all three, and an initialised repo makes the first push awkward
+Keep `upload.jks` and its password somewhere safe outside the repo (a password manager). If
+the key is lost, no update can ever be installed over an existing copy of the app.
 
-## 2. Push it
+## Publishing a new version
 
-From the unzipped `opentv` folder:
+1. Bump `versionCode` (must go up every release) and `versionName` in `app/build.gradle.kts`,
+   and add a `## <version>` section at the top of `CHANGELOG.md` — its text becomes the
+   release notes.
+2. Merge that to `main`.
+3. Go to **Releases → Draft a new release**, create the tag `v<version>` on `main`, and publish.
 
-```bash
-cd opentv
-git remote add origin https://github.com/suatsalih/opentv.git
-git push -u origin main
-```
+Publishing the release starts the **Release** workflow: it runs the tests, builds the APK
+signed with the project key, and attaches it to the release. The install page and the in-app
+updater pick it up on their own. If it ever does not start, open **Actions → Release → Run
+workflow** and choose the tag.
 
-The repo already has an initial commit, so there is nothing to stage.
+## Installing on a TV
 
-If git asks for a password, it wants a **personal access token**, not your account password —
-GitHub stopped accepting passwords over HTTPS. Generate one at
-**Settings → Developer settings → Personal access tokens → Tokens (classic)** with the `repo`
-scope, and paste that when prompted.
-
-## 3. Funding links (optional)
-
-The "Sponsor" button on the repo comes from `.github/FUNDING.yml` — it points at a PayPal
-donate link. Edit that file to change them. Everything else already points at
-`suatsalih/opentv`.
-
-## 4. Turn on Pages
-
-**Settings → Pages → Build and deployment → Source: GitHub Actions.**
-
-That's the only setting. Don't pick "Deploy from a branch" — the workflow in
-`.github/workflows/pages.yml` handles it.
-
-Your install page will be at:
-
-```
-https://suatsalih.github.io/opentv/
-```
-
-It goes live a minute or two after the first push.
-
-## 5. Cut the first release
-
-This is what actually produces an installable APK:
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-Watch it under the **Actions** tab. It runs the tests, builds the APK, and attaches it to a
-GitHub release. The install page picks it up on its own — nothing to edit.
-
-**Expect the first run to fail.** This code has never been compiled; there was no Android SDK
-available where it was written. The build log will name the file and line of anything that
-needs fixing. Fix, commit, delete and re-push the tag:
-
-```bash
-git tag -d v0.1.0 && git push origin :refs/tags/v0.1.0
-git tag v0.1.0 && git push origin v0.1.0
-```
-
-## 6. Install it on the TV
-
-Open the install page and follow the steps there. The short address to type into the
-**Downloader** app is:
+Open the install page and follow the steps there. The address to type into the **Downloader**
+app is:
 
 ```
 suatsalih.github.io/opentv/apk
 ```
 
-That link always redirects to the newest APK, so it never needs changing between releases.
+It always redirects to the newest APK, so it never changes between releases.
 
----
+## Before telling people about a release
 
-## Before you tell anyone about it
-
-Two things worth doing first:
-
-1. **Set up real signing.** See `docs/RELEASING.md`. Right now the APK is signed with the
-   Android debug key so it can be installed at all. Once you switch to a real keystore, anyone
-   running a debug-signed build has to uninstall and reinstall — trivial while it's just you,
-   genuinely annoying once it's a few hundred people.
-
-2. **Test it yourself for a week.** The thing that damaged Viewella's reputation was not bugs;
-   every new app has those. It was people paying, then finding nobody was home. You are not
-   charging anyone, which removes most of that risk — but arriving on r/Viewella with something
-   that falls over on first run still spends goodwill you only get to spend once.
+Install it on a real device first — an Android TV box, a Fire TV stick and a phone if you can —
+and use it for a few days with a real provider. A first impression is only made once.

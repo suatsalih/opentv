@@ -1,32 +1,26 @@
 # Releasing
 
-Releases are cut by pushing a tag. GitHub Actions does the rest.
+Releases are cut by publishing a GitHub release (see `SETUP.md`), or by pushing a tag:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.11.9
+git push origin v0.11.9
 ```
 
-`.github/workflows/release.yml` runs the tests, assembles the release APK and attaches it to a
+`.github/workflows/release.yml` runs the tests, assembles the release APK and attaches it to the
 GitHub release.
 
 ## Signing
 
-**Right now, release builds are signed with the Android debug key.** This is deliberate, and
-it is temporary.
+Release builds are signed with the project's own key, supplied to the workflow through the four
+repository secrets below. The release notes say `signed: yes`.
 
-An *unsigned* APK cannot be installed on Android at all — the installer rejects it before the
-user sees anything, with an error that explains nothing. That would mean no one can test the
-app until signing infrastructure exists. So `app/build.gradle.kts` falls back to the debug key
-when no keystore is configured, and the result installs fine.
+If those secrets are ever missing, `app/build.gradle.kts` falls back to the Android debug key so
+the build still produces an installable APK. Do not publish such a build: Android refuses to
+install a debug-signed update over a properly signed copy, so users would have to uninstall and
+lose their settings.
 
-The cost, stated plainly: **when the project moves to a real keystore, Android will refuse to
-upgrade over a debug-signed install.** Everyone testing today will have to uninstall and
-reinstall, losing their settings. That is fine for a handful of early testers and completely
-unacceptable once there are hundreds. **Set up real signing before announcing the project
-publicly.**
-
-### Setting up real signing
+### Setting up signing (already done for this repository)
 
 1. Generate a keystore:
 
