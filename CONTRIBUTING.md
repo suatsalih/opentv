@@ -42,7 +42,7 @@ credentials for a service you pay for, and issues are public forever.
 ## Setting up
 
 ```bash
-git clone https://github.com/OWNER/opentv.git
+git clone https://github.com/suatsalih/opentv.git
 cd opentv
 ./gradlew test          # fast, no device needed
 ./gradlew assembleDebug

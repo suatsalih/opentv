@@ -21,7 +21,7 @@ From the unzipped `opentv` folder:
 
 ```bash
 cd opentv
-git remote add origin https://github.com/opentvproject/opentv.git
+git remote add origin https://github.com/suatsalih/opentv.git
 git push -u origin main
 ```
 
@@ -36,7 +36,7 @@ scope, and paste that when prompted.
 
 The "Sponsor" button on the repo comes from `.github/FUNDING.yml` — it points at GitHub Sponsors
 and a PayPal donate link. Edit that file to change them. Everything else already points at
-`opentvproject/opentv`.
+`suatsalih/opentv`.
 
 ## 4. Turn on Pages
 
@@ -48,7 +48,7 @@ That's the only setting. Don't pick "Deploy from a branch" — the workflow in
 Your install page will be at:
 
 ```
-https://opentvproject.github.io/opentv/
+https://suatsalih.github.io/opentv/
 ```
 
 It goes live a minute or two after the first push.
@@ -80,7 +80,7 @@ Open the install page and follow the steps there. The short address to type into
 **Downloader** app is:
 
 ```
-opentvproject.github.io/opentv/apk
+suatsalih.github.io/opentv/apk
 ```
 
 That link always redirects to the newest APK, so it never needs changing between releases.
