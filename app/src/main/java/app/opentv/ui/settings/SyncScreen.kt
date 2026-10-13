@@ -21,10 +21,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,6 +42,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import app.opentv.R
 import app.opentv.sync.SyncServer
 import app.opentv.ui.SyncViewModel
+import app.opentv.ui.theme.Button
+import app.opentv.ui.theme.OutlinedButton
 
 /**
  * Local watch-history sync between two OpenTV devices on the same wifi. No servers of ours: one

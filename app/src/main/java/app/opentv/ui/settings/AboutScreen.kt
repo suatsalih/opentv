@@ -29,7 +29,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.asImageBitmap
 import app.opentv.pairing.QrCodes
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -47,6 +46,7 @@ import app.opentv.BuildConfig
 import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.core.ServiceLocator
+import app.opentv.ui.theme.OutlinedButton
 import app.opentv.update.UpdateChecker
 import kotlinx.coroutines.launch
 
