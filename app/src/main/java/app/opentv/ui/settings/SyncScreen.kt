@@ -19,11 +19,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,6 +42,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import app.opentv.R
 import app.opentv.sync.SyncServer
 import app.opentv.ui.SyncViewModel
+import app.opentv.ui.theme.Button
+import app.opentv.ui.theme.OutlinedButton
 
 /**
  * Local watch-history sync between two OpenTV devices on the same wifi. No servers of ours: one
@@ -230,13 +231,16 @@ private fun NasPane(viewModel: SyncViewModel) {
             }
 
             Spacer(Modifier.height(20.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                Modifier.toggleable(value = autoSync, onValueChange = { viewModel.setNasAutoSync(it) }),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
                 Text(
                     stringResource(R.string.sync_nas_auto),
                     style = MaterialTheme.typography.titleSmall,
                     modifier = Modifier.weight(1f),
                 )
-                Switch(checked = autoSync, onCheckedChange = { viewModel.setNasAutoSync(it) })
+                Switch(checked = autoSync, onCheckedChange = null)
             }
         }
     }

@@ -29,7 +29,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.asImageBitmap
 import app.opentv.pairing.QrCodes
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -47,6 +46,7 @@ import app.opentv.BuildConfig
 import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.core.ServiceLocator
+import app.opentv.ui.theme.OutlinedButton
 import app.opentv.update.UpdateChecker
 import kotlinx.coroutines.launch
 
@@ -181,15 +181,27 @@ fun AboutScreen(onBack: () -> Unit) {
 
         Spacer(Modifier.height(16.dp))
 
-        Section(stringResource(R.string.about_licence_links_title)) {
+        // The GPL's "appropriate legal notices": that it's free software under the GPL, with no
+        // warranty, the copyright line, and where to read the licence and get the source.
+        Section(stringResource(R.string.about_licence_label)) {
+            Text(
+                stringResource(R.string.about_licence_notice),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                "© 2026 The OpenTV Contributors",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(12.dp))
             LinkLine(
                 stringResource(R.string.about_licence_label),
                 "GNU General Public License v3.0",
                 url = "https://www.gnu.org/licenses/gpl-3.0.html",
             )
             LinkLine(stringResource(R.string.about_source_code), "github.com/suatsalih/opentv")
-            LinkLine(stringResource(R.string.about_report_bug), "github.com/suatsalih/opentv/issues")
-            LinkLine(stringResource(R.string.about_install_page), "suatsalih.github.io/opentv")
         }
     }
 }

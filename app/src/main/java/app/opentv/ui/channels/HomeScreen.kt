@@ -34,7 +34,6 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -85,6 +84,7 @@ import app.opentv.player.PlayerController
 import app.opentv.ui.ChannelsViewModel
 import app.opentv.ui.RecordingBackgroundDialog
 import app.opentv.ui.RecordingBackgroundPrompt
+import app.opentv.ui.theme.IconButton
 import coil.compose.AsyncImage
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -1089,10 +1089,10 @@ private fun ChannelsErrorState(onRetry: () -> Unit, onEditProvider: () -> Unit) 
             )
             Spacer(Modifier.height(20.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                androidx.compose.material3.Button(onClick = onRetry) {
+                app.opentv.ui.theme.Button(onClick = onRetry) {
                     Text(stringResource(R.string.common_try_again))
                 }
-                androidx.compose.material3.OutlinedButton(onClick = onEditProvider) {
+                app.opentv.ui.theme.OutlinedButton(onClick = onEditProvider) {
                     Text(stringResource(R.string.guide_edit_provider))
                 }
             }
@@ -1111,7 +1111,7 @@ private fun EmptyState(onAddSource: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.height(16.dp))
-            androidx.compose.material3.Button(onClick = onAddSource) { Text(stringResource(R.string.guide_add_provider_button)) }
+            app.opentv.ui.theme.Button(onClick = onAddSource) { Text(stringResource(R.string.guide_add_provider_button)) }
         }
     }
 }

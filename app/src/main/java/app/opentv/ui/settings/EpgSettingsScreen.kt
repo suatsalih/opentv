@@ -17,14 +17,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,6 +37,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import app.opentv.R
 import app.opentv.data.model.EpgFeed
 import app.opentv.ui.EpgViewModel
+import app.opentv.ui.theme.Button
+import app.opentv.ui.theme.OutlinedButton
+import app.opentv.ui.theme.TextButton
 
 /**
  * Guide settings: where guide data comes from.
@@ -152,6 +153,7 @@ private fun FeedRow(
         Row(
             Modifier
                 .fillMaxWidth()
+                .toggleable(value = feed.enabled, onValueChange = onToggle)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -173,7 +175,7 @@ private fun FeedRow(
                 TextButton(onClick = onRemove) { Text(stringResource(R.string.common_remove)) }
                 Spacer(Modifier.width(4.dp))
             }
-            Switch(checked = feed.enabled, onCheckedChange = onToggle)
+            Switch(checked = feed.enabled, onCheckedChange = null)
         }
     }
 }

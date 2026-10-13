@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.12.4
+
+- **You can always see where the remote is.** Some lists and settings — the channel groups, TV
+  guide settings, App settings, Recording, Providers, Profiles, Parental controls and others —
+  moved the cursor without showing it, because they used Android's standard focus effect, a faint
+  tint invisible from the sofa. Every focusable item now gets a clear accent outline and fill.
+- **Buttons show the cursor too.** Every button — including solid ones like *Fix*, which used to
+  hide the cursor completely — gets a bright ring and grows slightly when selected. The − / +
+  steppers in Recording settings light up and take one press each.
+- **Settings with a switch light up as one row.** Press OK anywhere on the row to flip it, like
+  Android TV's own settings, instead of hunting for a small switch.
+- **About: a short licence notice** — free software under the GPL v3, no warranty, copyright and
+  source-code link. The broken "Report a bug" link is gone.
+- **Removed the Stremio add-ons feature** (Settings → Add-ons and the "Add-on sources" button on
+  films). Movies and series from your provider work exactly as before.
+
 ## 0.12.3
 
 - **Language picker works in the Google Play edition.** Play only installed the phone's own

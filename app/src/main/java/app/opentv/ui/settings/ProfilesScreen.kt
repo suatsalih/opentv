@@ -17,12 +17,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,6 +36,9 @@ import app.opentv.premium.Premium
 import app.opentv.R
 import app.opentv.ui.ProfilesViewModel
 import app.opentv.ui.channels.OnScreenKeyboard
+import app.opentv.ui.theme.Button
+import app.opentv.ui.theme.OutlinedButton
+import app.opentv.ui.theme.TextButton
 
 /**
  * Who's watching. Add, rename, remove and switch between local profiles; the active one decides
