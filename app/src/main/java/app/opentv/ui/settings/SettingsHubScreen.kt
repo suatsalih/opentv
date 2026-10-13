@@ -25,7 +25,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.filled.WorkspacePremium
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Dns
-import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.GridView
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
@@ -63,7 +62,6 @@ import app.opentv.R
 @Composable
 fun SettingsHubScreen(
     onOpenProviders: () -> Unit,
-    onOpenAddons: () -> Unit,
     onOpenGuide: () -> Unit,
     onOpenChannels: () -> Unit,
     onOpenWebManager: () -> Unit,
@@ -88,7 +86,6 @@ fun SettingsHubScreen(
             null
         },
         HubEntry(Icons.Filled.Dns, stringResource(R.string.settings_providers_title), stringResource(R.string.settings_providers_subtitle), onOpenProviders),
-        HubEntry(Icons.Filled.Extension, stringResource(R.string.settings_addons_title), stringResource(R.string.settings_addons_subtitle), onOpenAddons),
         HubEntry(Icons.Filled.LiveTv, stringResource(R.string.settings_guide_title), stringResource(R.string.settings_guide_subtitle), onOpenGuide),
         HubEntry(Icons.Filled.GridView, stringResource(R.string.common_channels), stringResource(R.string.settings_channels_subtitle), onOpenChannels),
         HubEntry(Icons.Filled.PhoneAndroid, stringResource(R.string.settings_webmanager_title), stringResource(R.string.settings_webmanager_subtitle), onOpenWebManager),

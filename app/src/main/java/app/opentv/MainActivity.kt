@@ -79,7 +79,6 @@ import app.opentv.ui.settings.EpgSettingsScreen
 import app.opentv.ui.settings.ParentalControlsScreen
 import app.opentv.ui.settings.ProfilesScreen
 import app.opentv.ui.settings.ProvidersScreen
-import app.opentv.ui.settings.StremioAddonsScreen
 import app.opentv.ui.settings.RecordingSettingsScreen
 import app.opentv.ui.settings.SyncScreen
 import app.opentv.ui.settings.SettingsHubScreen
@@ -205,7 +204,6 @@ object Routes {
     const val APP_SETTINGS = "app-settings"
     const val SETTINGS_HUB = "settings"
     const val PROVIDERS = "providers"
-    const val ADDONS = "addons"
     const val CHANNELS = "channels"
     const val WEB_MANAGER = "web-manager"
     const val PROFILES = "profiles"
@@ -420,7 +418,6 @@ private fun OpenTvApp(isTelevision: Boolean) {
             composable(Routes.SETTINGS_HUB) {
                 SettingsHubScreen(
                     onOpenProviders = { navController.navigate(Routes.PROVIDERS) },
-                    onOpenAddons = { navController.navigate(Routes.ADDONS) },
                     onOpenGuide = { navController.navigate(Routes.EPG_SETTINGS) },
                     onOpenChannels = { navController.navigate(Routes.CHANNELS) },
                     onOpenWebManager = { navController.navigate(Routes.WEB_MANAGER) },
@@ -460,10 +457,6 @@ private fun OpenTvApp(isTelevision: Boolean) {
                     onEditSource = { src -> navController.navigate(Routes.editSource(src.id)) },
                     onBack = { navController.popBackStack() },
                 )
-            }
-
-            composable(Routes.ADDONS) {
-                StremioAddonsScreen(onBack = { navController.popBackStack() })
             }
 
             composable(Routes.ABOUT) {
@@ -514,11 +507,6 @@ private fun OpenTvApp(isTelevision: Boolean) {
                                 title = movie.displayTitle,
                                 ua = "OpenTV/0.1 (Android)",
                             ),
-                        )
-                    },
-                    onPlayUrl = { key, url, title ->
-                        navController.navigate(
-                            Routes.vodPlayer(key = key, url = url, title = title, ua = "OpenTV/0.1 (Android)"),
                         )
                     },
                     onOpenMovie = { movie -> navController.navigate(Routes.movieDetail(movie.id)) },

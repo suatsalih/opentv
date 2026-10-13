@@ -8,7 +8,6 @@ package app.opentv.core
 import android.content.Context
 import app.opentv.data.db.OpenTvDatabase
 import app.opentv.data.remote.StalkerApi
-import app.opentv.data.remote.StremioClient
 import app.opentv.data.remote.XtreamApi
 import app.opentv.data.repo.CatalogRepository
 import app.opentv.data.repo.EpgRepository
@@ -79,8 +78,6 @@ object ServiceLocator {
         /** Stalker / Ministra portal client (MAC handshake + create_link). */
         val stalkerApi: StalkerApi by lazy { StalkerApi(httpClient) }
 
-        /** Neutral Stremio add-on protocol client. Talks only to user-added manifest URLs. */
-        val stremioClient: StremioClient by lazy { StremioClient(httpClient) }
 
         val sourceRepository: SourceRepository by lazy {
             SourceRepository(database.sources(), xtreamApi, stalkerApi)

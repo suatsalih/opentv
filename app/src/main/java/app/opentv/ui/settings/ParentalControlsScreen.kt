@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -104,7 +105,10 @@ fun ParentalControlsScreen(
 
         Card {
             Row(
-                Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
+                Modifier
+                    .fillMaxWidth()
+                    .toggleable(value = unlocked, onValueChange = settings::setHiddenUnlocked)
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(Modifier.weight(1f)) {
@@ -115,7 +119,7 @@ fun ParentalControlsScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-                Switch(checked = unlocked, onCheckedChange = settings::setHiddenUnlocked)
+                Switch(checked = unlocked, onCheckedChange = null)
             }
         }
 
@@ -137,19 +141,20 @@ fun ParentalControlsScreen(
                 modifier = Modifier.fillMaxWidth().widthIn(max = 720.dp),
             ) {
                 categories.forEach { group ->
+                    val isHidden = group.key in hidden
                     Card {
                         Row(
-                            Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
+                            Modifier
+                                .fillMaxWidth()
+                                .toggleable(value = isHidden, onValueChange = { on ->
+                                    val next = hidden.toMutableSet().apply { if (on) add(group.key) else remove(group.key) }
+                                    settings.setHiddenCategories(next)
+                                })
+                                .padding(horizontal = 16.dp, vertical = 10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Text(group.label, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                            Switch(
-                                checked = group.key in hidden,
-                                onCheckedChange = { on ->
-                                    val next = hidden.toMutableSet().apply { if (on) add(group.key) else remove(group.key) }
-                                    settings.setHiddenCategories(next)
-                                },
-                            )
+                            Switch(checked = isHidden, onCheckedChange = null)
                         }
                     }
                 }

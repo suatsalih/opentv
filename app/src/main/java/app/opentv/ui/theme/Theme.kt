@@ -5,12 +5,18 @@
  */
 package app.opentv.ui.theme
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.ripple.RippleAlpha
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalRippleConfiguration
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RippleConfiguration
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -73,14 +79,29 @@ private val OpenTvTypography = Typography(
     labelLarge = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Medium),
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OpenTvTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-    MaterialTheme(
-        colorScheme = if (darkTheme) DarkScheme else LightScheme,
-        typography = OpenTvTypography,
-        content = content,
-    )
+    val colors = if (darkTheme) DarkScheme else LightScheme
+    MaterialTheme(colorScheme = colors, typography = OpenTvTypography) {
+        // Make remote-control focus unmistakable on every screen: plain clickable rows get a
+        // tinted fill and outline (TvFocusIndication), and Material's own buttons, switches and
+        // radio buttons a strong accent tint instead of their barely-visible default.
+        CompositionLocalProvider(
+            LocalIndication provides TvFocusIndication(colors.primary),
+            LocalRippleConfiguration provides RippleConfiguration(
+                color = colors.primary,
+                rippleAlpha = RippleAlpha(
+                    draggedAlpha = 0.16f,
+                    focusedAlpha = 0.45f,
+                    hoveredAlpha = 0.08f,
+                    pressedAlpha = 0.16f,
+                ),
+            ),
+            content = content,
+        )
+    }
 }

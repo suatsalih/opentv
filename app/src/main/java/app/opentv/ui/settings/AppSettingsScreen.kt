@@ -352,7 +352,7 @@ private fun SleepOption(label: String, selected: Boolean, onSelect: () -> Unit) 
             .padding(vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        RadioButton(selected = selected, onClick = onSelect)
+        RadioButton(selected = selected, onClick = null)
         Spacer(Modifier.width(8.dp))
         Text(label, style = MaterialTheme.typography.titleMedium)
     }
@@ -385,7 +385,7 @@ private fun ThemeOption(label: String, selected: Boolean, onSelect: () -> Unit) 
             .padding(vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        RadioButton(selected = selected, onClick = onSelect)
+        RadioButton(selected = selected, onClick = null)
         Spacer(Modifier.width(8.dp))
         Text(label, style = MaterialTheme.typography.titleMedium)
     }
@@ -413,7 +413,8 @@ private fun ToggleRow(
             )
         }
         Spacer(Modifier.width(16.dp))
-        Switch(checked = checked, onCheckedChange = onToggle)
+        // The whole row is the focus stop and the toggle; the switch only shows the state.
+        Switch(checked = checked, onCheckedChange = null)
     }
 }
 

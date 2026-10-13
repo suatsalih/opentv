@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -152,6 +153,7 @@ private fun FeedRow(
         Row(
             Modifier
                 .fillMaxWidth()
+                .toggleable(value = feed.enabled, onValueChange = onToggle)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -173,7 +175,7 @@ private fun FeedRow(
                 TextButton(onClick = onRemove) { Text(stringResource(R.string.common_remove)) }
                 Spacer(Modifier.width(4.dp))
             }
-            Switch(checked = feed.enabled, onCheckedChange = onToggle)
+            Switch(checked = feed.enabled, onCheckedChange = null)
         }
     }
 }
