@@ -382,7 +382,7 @@ private fun StepperRow(
     onChange: (Int) -> Unit,
 ) {
     Row(
-        Modifier.fillMaxWidth().toggleable(value = checked, onValueChange = onCheckedChange).padding(vertical = 6.dp),
+        Modifier.fillMaxWidth().padding(vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f)) {
