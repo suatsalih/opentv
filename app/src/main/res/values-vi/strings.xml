@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV miễn phí và sẽ luôn như vậy — không có gì bị khóa. Nếu ứng dụng hữu ích và bạn muốn đóng góp, một khoản ủng hộ một lần giúp các bản cập nhật tiếp tục: tính năng mới, bản sửa lỗi và hỗ trợ đều được làm trong thời gian rảnh. Hoàn toàn tùy chọn và thật sự trân trọng.</string>
     <string name="about_donate_paypal">Ủng hộ qua PayPal</string>
     <string name="about_scan_to_donate">Quét để ủng hộ</string>
-    <string name="about_licence_links_title">Giấy phép &amp; liên kết</string>
     <string name="about_licence_label">Giấy phép</string>
+    <string name="about_licence_notice">OpenTV là phần mềm tự do, được cấp phép theo GNU General Public License v3.0. Phần mềm được cung cấp mà không có bất kỳ bảo đảm nào.</string>
     <string name="about_source_code">Mã nguồn</string>
-    <string name="about_report_bug">Báo lỗi / đề xuất tính năng</string>
-    <string name="about_install_page">Trang cài đặt</string>
     <string name="onboarding_default_provider_name">Nhà cung cấp của tôi</string>
     <string name="onboarding_default_playlist_name">Danh sách phát của tôi</string>
     <string name="onboarding_add_provider_title">Thêm nhà cung cấp của bạn</string>

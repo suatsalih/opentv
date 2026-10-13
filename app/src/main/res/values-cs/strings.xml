@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV je zdarma a vždy bude — nic není zamčené. Pokud je pro vás užitečný a chcete přispět, jednorázový příspěvek pomáhá udržet aktualizace: nové funkce, opravy i podpora vznikají ve volných večerech. Zcela dobrovolné a upřímně oceněné.</string>
     <string name="about_donate_paypal">Přispět přes PayPal</string>
     <string name="about_scan_to_donate">Naskenováním přispějete</string>
-    <string name="about_licence_links_title">Licence a odkazy</string>
     <string name="about_licence_label">Licence</string>
+    <string name="about_licence_notice">OpenTV je svobodný software licencovaný pod GNU General Public License v3.0. Je poskytován bez jakékoli záruky.</string>
     <string name="about_source_code">Zdrojový kód</string>
-    <string name="about_report_bug">Nahlásit chybu / navrhnout funkci</string>
-    <string name="about_install_page">Instalační stránka</string>
     <string name="onboarding_default_provider_name">Můj poskytovatel</string>
     <string name="onboarding_default_playlist_name">Můj playlist</string>
     <string name="onboarding_add_provider_title">Přidejte svého poskytovatele</string>

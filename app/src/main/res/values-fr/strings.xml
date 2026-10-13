@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV est gratuit et le restera — rien n\'est verrouillé. S\'il vous est utile et que vous souhaitez contribuer, un don ponctuel permet de continuer les mises à jour : nouvelles fonctions, corrections et assistance se font sur le temps libre. Entièrement facultatif, et sincèrement apprécié.</string>
     <string name="about_donate_paypal">Faire un don via PayPal</string>
     <string name="about_scan_to_donate">Scannez pour faire un don</string>
-    <string name="about_licence_links_title">Licence et liens</string>
     <string name="about_licence_label">Licence</string>
+    <string name="about_licence_notice">OpenTV est un logiciel libre, distribué sous licence GNU General Public License v3.0. Il est fourni sans aucune garantie.</string>
     <string name="about_source_code">Code source</string>
-    <string name="about_report_bug">Signaler un bug / demander une fonctionnalité</string>
-    <string name="about_install_page">Page d\'installation</string>
     <string name="onboarding_default_provider_name">Mon fournisseur</string>
     <string name="onboarding_default_playlist_name">Ma playlist</string>
     <string name="onboarding_add_provider_title">Ajoutez votre fournisseur</string>

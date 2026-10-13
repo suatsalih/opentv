@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV безкоштовний і завжди таким буде — нічого не заблоковано. Якщо він вам корисний і ви хочете підтримати проєкт, разовий донат допомагає продовжувати оновлення: нові функції, виправлення й підтримка робляться у вільний час. Цілком необов\'язково й щиро цінується.</string>
     <string name="about_donate_paypal">Задонатити через PayPal</string>
     <string name="about_scan_to_donate">Скануйте, щоб задонатити</string>
-    <string name="about_licence_links_title">Ліцензія та посилання</string>
     <string name="about_licence_label">Ліцензія</string>
+    <string name="about_licence_notice">OpenTV — вільне програмне забезпечення за ліцензією GNU General Public License v3.0. Надається без будь-яких гарантій.</string>
     <string name="about_source_code">Вихідний код</string>
-    <string name="about_report_bug">Повідомити про помилку / запропонувати функцію</string>
-    <string name="about_install_page">Сторінка встановлення</string>
     <string name="onboarding_default_provider_name">Мій провайдер</string>
     <string name="onboarding_default_playlist_name">Мій плейлист</string>
     <string name="onboarding_add_provider_title">Додайте свого провайдера</string>

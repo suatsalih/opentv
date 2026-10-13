@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV ücretsizdir ve her zaman öyle kalacak — hiçbir şey kilitli değil. İşinize yarıyorsa ve katkıda bulunmak isterseniz, tek seferlik bir bağış güncellemelerin sürmesini sağlar: yeni özellikler, düzeltmeler ve destek boş zamanlarda hazırlanıyor. Tamamen isteğe bağlı ve gerçekten takdir edilir.</string>
     <string name="about_donate_paypal">PayPal ile bağış yap</string>
     <string name="about_scan_to_donate">Bağış yapmak için tarayın</string>
-    <string name="about_licence_links_title">Lisans ve bağlantılar</string>
     <string name="about_licence_label">Lisans</string>
+    <string name="about_licence_notice">OpenTV, GNU General Public License v3.0 ile lisanslanmış özgür bir yazılımdır. Hiçbir garanti olmaksızın sunulur.</string>
     <string name="about_source_code">Kaynak kod</string>
-    <string name="about_report_bug">Hata bildir / özellik talep et</string>
-    <string name="about_install_page">Yükleme sayfası</string>
     <string name="onboarding_default_provider_name">Sağlayıcım</string>
     <string name="onboarding_default_playlist_name">Oynatma listem</string>
     <string name="onboarding_add_provider_title">Sağlayıcınızı ekleyin</string>

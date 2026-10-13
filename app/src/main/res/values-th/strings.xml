@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV ใช้ฟรีและจะฟรีตลอดไป — ไม่มีฟีเจอร์ใดถูกล็อก หากมีประโยชน์และคุณอยากช่วยสนับสนุน การบริจาคครั้งเดียวช่วยให้การอัปเดตเดินหน้าต่อได้ ทั้งฟีเจอร์ใหม่ การแก้ไข และการช่วยเหลือ ล้วนทำในเวลาว่าง ไม่บังคับเลย และขอบคุณจริงๆ</string>
     <string name="about_donate_paypal">บริจาคผ่าน PayPal</string>
     <string name="about_scan_to_donate">สแกนเพื่อบริจาค</string>
-    <string name="about_licence_links_title">ใบอนุญาตและลิงก์</string>
     <string name="about_licence_label">ใบอนุญาต</string>
+    <string name="about_licence_notice">OpenTV เป็นซอฟต์แวร์เสรีภายใต้สัญญาอนุญาต GNU General Public License v3.0 และไม่มีการรับประกันใดๆ</string>
     <string name="about_source_code">ซอร์สโค้ด</string>
-    <string name="about_report_bug">รายงานข้อบกพร่อง / ขอฟีเจอร์</string>
-    <string name="about_install_page">หน้าติดตั้ง</string>
     <string name="onboarding_default_provider_name">ผู้ให้บริการของฉัน</string>
     <string name="onboarding_default_playlist_name">เพลย์ลิสต์ของฉัน</string>
     <string name="onboarding_add_provider_title">เพิ่มผู้ให้บริการของคุณ</string>

@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV er gratis og vil altid være det — intet er låst. Hvis du har gavn af det og vil give et bidrag, holder et engangsbeløb opdateringerne i gang: nye funktioner, rettelser og support laves i fritiden. Helt frivilligt, og virkelig værdsat.</string>
     <string name="about_donate_paypal">Donér via PayPal</string>
     <string name="about_scan_to_donate">Scan for at donere</string>
-    <string name="about_licence_links_title">Licens &amp; links</string>
     <string name="about_licence_label">Licens</string>
+    <string name="about_licence_notice">OpenTV er fri software, licenseret under GNU General Public License v3.0. Det leveres uden nogen garanti.</string>
     <string name="about_source_code">Kildekode</string>
-    <string name="about_report_bug">Rapportér en fejl / anmod om en funktion</string>
-    <string name="about_install_page">Installationsside</string>
     <string name="onboarding_default_provider_name">Min udbyder</string>
     <string name="onboarding_default_playlist_name">Min playliste</string>
     <string name="onboarding_add_provider_title">Tilføj din udbyder</string>

@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV は無料で、これからもずっと無料です。制限された機能はありません。役に立っていて応援したいと思ったら、1 回限りの寄付で今後のアップデートを支えられます。新機能も修正もサポートも、すべて空き時間で作っています。まったく任意ですが、とてもありがたいです。</string>
     <string name="about_donate_paypal">PayPal で寄付</string>
     <string name="about_scan_to_donate">スキャンして寄付</string>
-    <string name="about_licence_links_title">ライセンスとリンク</string>
     <string name="about_licence_label">ライセンス</string>
+    <string name="about_licence_notice">OpenTV は GNU General Public License v3.0 でライセンスされたフリーソフトウェアです。いかなる保証もありません。</string>
     <string name="about_source_code">ソースコード</string>
-    <string name="about_report_bug">不具合報告／機能リクエスト</string>
-    <string name="about_install_page">インストールページ</string>
     <string name="onboarding_default_provider_name">マイプロバイダー</string>
     <string name="onboarding_default_playlist_name">マイプレイリスト</string>
     <string name="onboarding_add_provider_title">プロバイダーを追加</string>

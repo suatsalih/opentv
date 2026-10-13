@@ -306,11 +306,9 @@
     <string name="about_support_body">Az OpenTV ingyenes, és mindig az is marad — semmi sincs lezárva. Ha hasznos számára, és szeretne hozzájárulni, egy egyszeri adomány segít folytatni a frissítéseket: az új funkciók, javítások és a támogatás szabadidőben készülnek. Teljesen önkéntes, és őszintén köszönjük.</string>
     <string name="about_donate_paypal">Adományozás PayPalon</string>
     <string name="about_scan_to_donate">Olvassa be az adományozáshoz</string>
-    <string name="about_licence_links_title">Licenc &amp; hivatkozások</string>
     <string name="about_licence_label">Licenc</string>
+    <string name="about_licence_notice">Az OpenTV szabad szoftver, a GNU General Public License v3.0 licenc alatt. Mindenféle garancia nélkül érhető el.</string>
     <string name="about_source_code">Forráskód</string>
-    <string name="about_report_bug">Hiba jelentése / funkció kérése</string>
-    <string name="about_install_page">Telepítési oldal</string>
     <string name="onboarding_default_provider_name">Saját szolgáltató</string>
     <string name="onboarding_default_playlist_name">Saját lejátszási lista</string>
     <string name="onboarding_add_provider_title">Adja hozzá a szolgáltatóját</string>

@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV رایگان است و همیشه رایگان می‌ماند — هیچ چیزی قفل نیست. اگر برایتان مفید است و می‌خواهید کمکی کنید، یک کمک مالی یک‌باره به ادامهٔ به‌روزرسانی‌ها کمک می‌کند: قابلیت‌های جدید، رفع اشکال‌ها و پشتیبانی همه در اوقات فراغت انجام می‌شوند. کاملاً اختیاری است و واقعاً قدردانی می‌شود.</string>
     <string name="about_donate_paypal">اهدا از طریق PayPal</string>
     <string name="about_scan_to_donate">برای اهدا اسکن کنید</string>
-    <string name="about_licence_links_title">مجوز و پیوندها</string>
     <string name="about_licence_label">مجوز</string>
+    <string name="about_licence_notice">OpenTV نرم‌افزاری آزاد است که تحت مجوز GNU General Public License v3.0 منتشر شده و بدون هیچ ضمانتی ارائه می‌شود.</string>
     <string name="about_source_code">کد منبع</string>
-    <string name="about_report_bug">گزارش اشکال / درخواست ویژگی</string>
-    <string name="about_install_page">صفحه نصب</string>
     <string name="onboarding_default_provider_name">ارائه‌دهنده من</string>
     <string name="onboarding_default_playlist_name">پلی‌لیست من</string>
     <string name="onboarding_add_provider_title">ارائه‌دهنده خود را اضافه کنید</string>

@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV gratis dan akan selalu gratis — tidak ada yang dikunci. Jika bermanfaat dan Anda ingin ikut membantu, donasi sekali saja membuat pembaruan terus berjalan: fitur baru, perbaikan, dan dukungan semuanya dikerjakan di waktu luang. Sepenuhnya opsional, dan sangat dihargai.</string>
     <string name="about_donate_paypal">Donasi lewat PayPal</string>
     <string name="about_scan_to_donate">Pindai untuk berdonasi</string>
-    <string name="about_licence_links_title">Lisensi &amp; tautan</string>
     <string name="about_licence_label">Lisensi</string>
+    <string name="about_licence_notice">OpenTV adalah perangkat lunak bebas, berlisensi GNU General Public License v3.0. Disediakan tanpa jaminan apa pun.</string>
     <string name="about_source_code">Kode sumber</string>
-    <string name="about_report_bug">Laporkan bug / ajukan fitur</string>
-    <string name="about_install_page">Halaman instalasi</string>
     <string name="onboarding_default_provider_name">Penyedia saya</string>
     <string name="onboarding_default_playlist_name">Playlist saya</string>
     <string name="onboarding_add_provider_title">Tambahkan penyedia Anda</string>

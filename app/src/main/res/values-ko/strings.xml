@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV는 무료이며 앞으로도 계속 무료입니다. 잠긴 기능은 없습니다. 유용하게 쓰고 계시고 도움을 주고 싶다면, 한 번의 후원이 업데이트를 이어 가는 데 큰 힘이 됩니다. 새 기능, 수정, 지원 모두 여가 시간에 만들어집니다. 전적으로 선택 사항이며, 진심으로 감사드립니다.</string>
     <string name="about_donate_paypal">PayPal로 후원</string>
     <string name="about_scan_to_donate">스캔하여 후원</string>
-    <string name="about_licence_links_title">라이선스 및 링크</string>
     <string name="about_licence_label">라이선스</string>
+    <string name="about_licence_notice">OpenTV는 GNU General Public License v3.0에 따라 배포되는 자유 소프트웨어이며, 어떠한 보증도 제공되지 않습니다.</string>
     <string name="about_source_code">소스 코드</string>
-    <string name="about_report_bug">버그 신고/기능 요청</string>
-    <string name="about_install_page">설치 페이지</string>
     <string name="onboarding_default_provider_name">내 공급자</string>
     <string name="onboarding_default_playlist_name">내 재생 목록</string>
     <string name="onboarding_add_provider_title">공급자 추가</string>

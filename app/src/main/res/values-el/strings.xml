@@ -306,11 +306,9 @@
     <string name="about_support_body">Το OpenTV είναι δωρεάν και θα είναι πάντα — τίποτα δεν είναι κλειδωμένο. Αν σας φαίνεται χρήσιμο και θέλετε να συμβάλετε, μια εφάπαξ δωρεά κρατά τις ενημερώσεις σε εξέλιξη: νέες λειτουργίες, διορθώσεις και υποστήριξη γίνονται στον ελεύθερο χρόνο. Εντελώς προαιρετικό και πραγματικά εκτιμητέο.</string>
     <string name="about_donate_paypal">Δωρεά μέσω PayPal</string>
     <string name="about_scan_to_donate">Σαρώστε για δωρεά</string>
-    <string name="about_licence_links_title">Άδεια χρήσης &amp; σύνδεσμοι</string>
     <string name="about_licence_label">Άδεια χρήσης</string>
+    <string name="about_licence_notice">Το OpenTV είναι ελεύθερο λογισμικό με άδεια GNU General Public License v3.0. Παρέχεται χωρίς καμία εγγύηση.</string>
     <string name="about_source_code">Πηγαίος κώδικας</string>
-    <string name="about_report_bug">Αναφορά σφάλματος / αίτημα λειτουργίας</string>
-    <string name="about_install_page">Σελίδα εγκατάστασης</string>
     <string name="onboarding_default_provider_name">Ο πάροχός μου</string>
     <string name="onboarding_default_playlist_name">Η λίστα αναπαραγωγής μου</string>
     <string name="onboarding_add_provider_title">Προσθέστε τον πάροχό σας</string>

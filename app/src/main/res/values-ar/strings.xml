@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV مجاني وسيبقى مجانيًا دائمًا — لا شيء مقفل. إذا كان مفيدًا لك وأردت المساهمة، فإن تبرعًا لمرة واحدة يساعد على استمرار التحديثات: الميزات الجديدة والإصلاحات والدعم كلها تُنجز في أوقات الفراغ. اختياري تمامًا، ومقدَّر حقًا.</string>
     <string name="about_donate_paypal">التبرع عبر PayPal</string>
     <string name="about_scan_to_donate">امسح للتبرع</string>
-    <string name="about_licence_links_title">الترخيص والروابط</string>
     <string name="about_licence_label">الترخيص</string>
+    <string name="about_licence_notice">OpenTV برنامج حر، مرخّص بموجب GNU General Public License v3.0، ويأتي دون أي ضمان.</string>
     <string name="about_source_code">الكود المصدري</string>
-    <string name="about_report_bug">الإبلاغ عن خطأ / اقتراح ميزة</string>
-    <string name="about_install_page">صفحة التثبيت</string>
     <string name="onboarding_default_provider_name">مزوّدي</string>
     <string name="onboarding_default_playlist_name">قائمة تشغيلي</string>
     <string name="onboarding_add_provider_title">أضف مزوّد خدمتك</string>

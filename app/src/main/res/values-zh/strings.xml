@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV 免费，并且永远免费——没有任何功能被锁定。如果它对你有用，并且你想支持一下，一次性的捐赠能让更新持续下去：新功能、修复和支持都是利用业余时间完成的。完全自愿，真心感谢。</string>
     <string name="about_donate_paypal">通过 PayPal 捐赠</string>
     <string name="about_scan_to_donate">扫码捐赠</string>
-    <string name="about_licence_links_title">许可与链接</string>
     <string name="about_licence_label">许可</string>
+    <string name="about_licence_notice">OpenTV 是自由软件，采用 GNU General Public License v3.0 许可，不提供任何担保。</string>
     <string name="about_source_code">源代码</string>
-    <string name="about_report_bug">报告问题／请求新功能</string>
-    <string name="about_install_page">安装页面</string>
     <string name="onboarding_default_provider_name">我的提供商</string>
     <string name="onboarding_default_playlist_name">我的播放列表</string>
     <string name="onboarding_add_provider_title">添加你的提供商</string>

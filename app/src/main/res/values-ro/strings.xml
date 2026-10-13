@@ -306,11 +306,9 @@
     <string name="about_support_body">OpenTV este gratuit și va rămâne mereu așa — nimic nu este blocat. Dacă îți este util și vrei să contribui, o donație unică ajută la continuarea actualizărilor: funcții noi, remedieri și asistență se fac în timpul liber. Complet opțional și sincer apreciat.</string>
     <string name="about_donate_paypal">Donează prin PayPal</string>
     <string name="about_scan_to_donate">Scanează pentru a dona</string>
-    <string name="about_licence_links_title">Licență &amp; linkuri</string>
     <string name="about_licence_label">Licență</string>
+    <string name="about_licence_notice">OpenTV este software liber, licențiat sub GNU General Public License v3.0. Este oferit fără nicio garanție.</string>
     <string name="about_source_code">Cod sursă</string>
-    <string name="about_report_bug">Raportează o eroare / solicită o funcție</string>
-    <string name="about_install_page">Pagina de instalare</string>
     <string name="onboarding_default_provider_name">Furnizorul meu</string>
     <string name="onboarding_default_playlist_name">Playlistul meu</string>
     <string name="onboarding_add_provider_title">Adaugă furnizorul tău</string>
