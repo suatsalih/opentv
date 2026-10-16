@@ -1,6 +1,6 @@
 # OpenTV
 
-**A free, open-source IPTV player for Android TV, Fire TV, phones and tablets.**
+**An open-source IPTV player for Android TV, Google TV, phones and tablets — [on Google Play](https://play.google.com/store/apps/details?id=io.github.suatsalih.opentv).**
 
 No account. No subscription. No server of ours between you and your provider.
 
@@ -9,9 +9,9 @@ No account. No subscription. No server of ours between you and your provider.
 
 ---
 
-> **Support OpenTV** — it's free and always will be. If it saved you from a dead "lifetime"
-> app, you can chip in via **[PayPal](https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0)**.
-> Entirely optional; the app is never paywalled.
+> **Get OpenTV on [Google Play](https://play.google.com/store/apps/details?id=io.github.suatsalih.opentv).**
+> Live TV and the guide are free; OpenTV Premium is a one-off purchase, not a subscription.
+> This repository is the source code — no APKs are published here.
 
 ## Why this exists
 
@@ -42,9 +42,9 @@ keep it alive. That is the entire point.
   hand-off to an external player
 - **Free sync between your own devices** — favourites, watch history and NAS recordings, over
   your wifi or Tailscale, with no server of ours
-- **Multiple languages** (fully translated to Spanish), a parental PIN, profiles, and self-updates
+- **Multiple languages** (fully translated to Spanish), a parental PIN and profiles
 - **D-pad first** — designed for a remote, works with a touchscreen
-- **One APK** for Android TV, Fire TV, phones and tablets
+- **One app** for Android TV, Google TV, phones and tablets
 
 ## Screenshots
 
@@ -75,26 +75,10 @@ Open-source through and through — the About screen carries the licence, the li
 
 ## Install
 
-**→ [Install page](https://suatsalih.github.io/opentv/)** — step-by-step for Chromecast with
-Google TV, Android TV boxes, Fire TV Sticks, and phones.
+**→ [OpenTV on Google Play](https://play.google.com/store/apps/details?id=io.github.suatsalih.opentv)** — for Android TV, Google TV, phones and tablets.
 
-On a TV, the quickest route is the **[Downloader app](https://www.aftvnews.com/downloader/)** —
-enter this address:
-
-```
-suatsalih.github.io/opentv/apk
-```
-
-That address always redirects to the newest APK, so it never goes stale. On a phone, the
-[install page](https://suatsalih.github.io/opentv/) is a
-one-tap download. Or grab the APK straight from [Releases](../../releases).
-
-Every release is built by GitHub Actions from a tagged commit, and the workflow that built it
-is public — you can check the APK against the source, or rebuild it yourself, rather than
-trusting anyone's word.
-
-New to this? [SETUP.md](SETUP.md) walks through getting the repo, the install page and the
-first build running.
+Google Play is the only place OpenTV is distributed. This repository publishes the source code,
+as the GPL requires, and no ready-made APKs; if you want a build of your own, see below.
 
 ## Build it yourself
 
@@ -104,8 +88,9 @@ cd opentv
 ./gradlew assembleDebug
 ```
 
-You need JDK 17+ and the Android SDK (API 35). Android Studio will fetch it for you. The debug
-APK lands in `app/build/outputs/apk/debug/`.
+You need JDK 17+ and the Android SDK (API 36). Android Studio will fetch it for you. The debug
+builds land in `app/build/outputs/apk/<edition>/debug/` — `github` is the build with every feature
+unlocked, `play` is the Google Play edition.
 
 Run the tests:
 
@@ -137,22 +122,14 @@ guessing. If a channel fails on your setup, [open an issue](../../issues/new/cho
 
 ## Supporting the project
 
-OpenTV comes in two editions, built from this same code:
+OpenTV is distributed through [Google Play](https://play.google.com/store/apps/details?id=io.github.suatsalih.opentv). Live TV and the guide with one provider
+are free; **OpenTV Premium** — one payment, no subscription — adds several providers, catch-up,
+recording, movies & series and profiles. That is how the project is supported. See
+[docs/PLAY_STORE.md](docs/PLAY_STORE.md).
 
-- **This one — GitHub releases, the install page and the Downloader code — is free, with every
-  feature unlocked.** There is nothing to buy and no subscription.
-- **The Google Play edition** is free for Live TV and the guide with one provider, and offers
-  **OpenTV Premium** — one payment, no subscription — for several providers, catch-up,
-  recording, movies & series and profiles. Google Play does not allow outside payment links, so
-  that is how the Play edition is supported. See [docs/PLAY_STORE.md](docs/PLAY_STORE.md).
-
-Neither edition sells a "lifetime" promise — the failure mode this project was built in
-response to is a promise nobody could keep, so we are not making one.
-
-If it saves you money or annoyance and you want to say thanks, you can support the project via
-[PayPal](https://www.paypal.com/donate/?business=suat.salih@gmail.com&item_name=Support+OpenTV&no_recurring=0)
-— see [.github/FUNDING.yml](.github/FUNDING.yml). Tips fund nothing except spare-evening development;
-nobody is owed a feature for one, and nothing is gated behind one.
+It does not sell a "lifetime" promise — the failure mode this project was built in response to
+is a promise nobody could keep, so we are not making one. And because the source is GPL, the
+app can never be taken away: anyone can build it from this repository.
 
 ## Licence
 

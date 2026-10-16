@@ -2,7 +2,7 @@
 
 The complete playbook for the **Google Play edition**: every screen in Play Console, the answer to
 every question it asks, ready-to-paste listing copy, and replies for reviewers and users. Work top
-to bottom. The sideloaded GitHub edition is unaffected by any of this.
+to bottom. Google Play is the only place OpenTV is distributed; GitHub carries the source code only.
 
 ---
 
@@ -27,9 +27,12 @@ to bottom. The sideloaded GitHub edition is unaffected by any of this.
 
 ## 1. The two editions
 
-| | GitHub edition | Google Play edition |
+Only the Play edition is published. The `github` flavour stays in the source for anyone building
+the app themselves; no APK of it is offered.
+
+| | `github` flavour (self-built only) | Google Play edition |
 |---|---|---|
-| Built as | `.apk`, attached to each GitHub release | `.aab`, kept as a workflow artifact |
+| Built as | `.apk`, by whoever builds it | `.aab`, kept as a workflow artifact |
 | Updates | Built-in updater | Google Play |
 | Money | PayPal donation link | **OpenTV Premium**, a one-off in-app purchase |
 | Features | Everything unlocked | Free: Live TV and the guide for one provider. Premium: the rest |
@@ -68,8 +71,8 @@ Recordings tabs, and extra profiles.
 ## 3. Get the app bundle
 
 Every release builds it. Open the release's run under **Actions → Release** and download the
-artifact **`opentv-play-vX.Y.Z`**. It contains the signed `.aab`, signed with the project's upload
-key (the same key as the GitHub APK).
+artifact **`opentv-play-vX.Y.Z`**. It contains the `.aab`, signed with the project's upload key.
+The artifact is kept for 14 days.
 
 ---
 
@@ -458,8 +461,8 @@ them for plain `•` headings.
 
 ### "Payments policy"
 
-Make sure you uploaded the **Play** bundle (`opentv-play-…`), not the GitHub APK: only the Play
-edition hides the PayPal link. Reply:
+Make sure you uploaded the **Play** bundle (`opentv-play-…`), not a self-built `github` APK: only
+the Play edition hides the PayPal link. Reply:
 
 ```
 All digital features are sold only through Google Play Billing (product premium_unlock). The app
@@ -531,8 +534,7 @@ can edit them later.
 > example a subscription from a licensed provider.
 
 **"Will it come to Fire TV / Samsung / LG?"**
-> Fire TV users can install it from github.com/suatsalih/opentv. A version for Samsung and LG TVs
-> is in the works.
+> OpenTV is on Google Play only for now, so it isn't available for Fire TV, Samsung or LG TVs.
 
 ---
 

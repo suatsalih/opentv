@@ -4,7 +4,7 @@ on:
   push:
     tags: ['v*']
   # A tag created from the website's "Draft a new release" page does not fire a push event,
-  # so a published release starts the build too. The workflow then attaches the APK to it.
+  # so a published release starts the build too. The workflow then fills in its release notes.
   release:
     types: [published]
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   release:
-    name: Build and publish APK
+    name: Build Play bundle and publish release notes
     runs-on: ubuntu-latest
 
     steps:
@@ -33,8 +33,8 @@ jobs:
         run: ./gradlew testGithubDebugUnitTest testPlayDebugUnitTest
 
       # Only runs if a keystore has been added to repository secrets. Without one the
-      # release build falls back to the debug key, which still produces an installable
-      # APK — see docs/RELEASING.md.
+      # release build falls back to the debug key, which Play Console rejects — see
+      # docs/RELEASING.md.
       # The secrets context is not usable directly in an `if:`, so it is lifted into env first.
       - name: Decode signing keystore
         env:
@@ -44,40 +44,25 @@ jobs:
           printf '%s' "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/upload.jks"
           echo "KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
 
-      # The GitHub edition as an APK (sideloading, the install page, the in-app updater) and the
-      # Google Play edition as an app bundle, signed with the same upload key, ready for Play Console.
-      - name: Assemble release APK and Play bundle
+      # The Google Play edition as an app bundle, signed with the upload key, ready for Play Console.
+      # OpenTV is distributed through Google Play only: no APK is built or published here. The
+      # repository offers the source code, which GitHub attaches to every release automatically.
+      - name: Assemble Play bundle
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleGithubRelease bundlePlayRelease
+        run: ./gradlew bundlePlayRelease
 
-      # A stable asset name matters: the install page and the /apk short link both look for
-      # a file ending in .apk, and a predictable name keeps direct links working.
-      - name: Name the artifact
-        id: artifact
-        run: |
-          TAG="${GITHUB_REF_NAME}"
-          SOURCE=$(find app/build/outputs/apk/github/release -name '*.apk' | head -1)
-          if [ -z "$SOURCE" ]; then
-            echo "::error::No APK was produced by assembleGithubRelease"
-            exit 1
-          fi
-          mkdir -p dist
-          cp "$SOURCE" "dist/opentv-${TAG}.apk"
-          cp "$SOURCE" "dist/opentv.apk"
-          echo "path=dist/opentv-${TAG}.apk" >> "$GITHUB_OUTPUT"
-          echo "signed=$([ -n "$KEYSTORE_PATH" ] && echo yes || echo debug-key)" >> "$GITHUB_OUTPUT"
-
-      # The Play bundle is not a public download — it is uploaded to Play Console by hand — so it is
-      # kept as a workflow artifact rather than attached to the release.
+      # The bundle is for uploading to Play Console by hand, not a public download: it is kept as a
+      # short-lived workflow artifact and never attached to the release.
       - name: Keep the Play bundle
         uses: actions/upload-artifact@v4
         with:
           name: opentv-play-${{ github.ref_name }}
           path: app/build/outputs/bundle/playRelease/*.aab
           if-no-files-found: error
+          retention-days: 14
 
       - name: Release notes from CHANGELOG
         run: |
@@ -87,12 +72,11 @@ jobs:
           {
             echo ""
             echo "---"
-            echo "Built by GitHub Actions from the tagged commit — the workflow is public, so anyone can verify this APK against the source."
+            echo "Source code only. OpenTV is available on Google Play: https://play.google.com/store/apps/details?id=io.github.suatsalih.opentv"
           } >> release-notes.md
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.apk
           generate_release_notes: false
           body_path: release-notes.md

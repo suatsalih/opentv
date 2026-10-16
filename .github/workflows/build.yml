@@ -60,13 +60,6 @@ jobs:
       - name: Build the Play bundle
         run: ./gradlew bundlePlayRelease --stacktrace
 
-      - name: Upload debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: opentv-debug-apk
-          path: app/build/outputs/apk/*/debug/*.apk
-          if-no-files-found: error
-
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
