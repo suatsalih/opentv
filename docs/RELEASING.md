@@ -7,18 +7,18 @@ git tag v0.11.9
 git push origin v0.11.9
 ```
 
-`.github/workflows/release.yml` runs the tests, assembles the release APK and attaches it to the
-GitHub release.
+`.github/workflows/release.yml` runs the tests, builds the Google Play app bundle (kept as a
+workflow artifact for upload to Play Console) and writes the release notes. No APK is built or
+attached: OpenTV is distributed through Google Play only, and GitHub carries the source.
 
 ## Signing
 
-Release builds are signed with the project's own key, supplied to the workflow through the four
-repository secrets below. The release notes say `signed: yes`.
+Release builds are signed with the project's own upload key, supplied to the workflow through
+the four repository secrets below.
 
 If those secrets are ever missing, `app/build.gradle.kts` falls back to the Android debug key so
-the build still produces an installable APK. Do not publish such a build: Android refuses to
-install a debug-signed update over a properly signed copy, so users would have to uninstall and
-lose their settings.
+the build still completes. Do not upload such a bundle: Play Console rejects anything not signed
+with the registered upload key.
 
 ### Setting up signing (already done for this repository)
 
@@ -33,8 +33,7 @@ lose their settings.
    `KEYSTORE_BASE64` (the output of `base64 -i upload.jks`), `KEYSTORE_PASSWORD`, `KEY_ALIAS`,
    `KEY_PASSWORD`.
 
-3. That is all — `release.yml` and `build.gradle.kts` already pick them up. The release notes
-   will report `signed: yes` instead of `debug-key`.
+3. That is all — `release.yml` and `build.gradle.kts` already pick them up.
 
 **The keystore must belong to the project, not to one person.** A single maintainer holding
 the only copy is the same single point of failure this project exists to avoid — if they go
